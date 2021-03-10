@@ -9,8 +9,8 @@ const BotNavigation = ( {value, onChange}) => {
 
     return (
         <BottomNavigation value={value} onChange={(e, tab) => onChange(tab)} showLabels={true}>
-            <BottomNavigationAction label="Hjem" icon={<Home />}></BottomNavigationAction>
-            <BottomNavigationAction label="Afhentninger" icon={<ListAlt />}></BottomNavigationAction>
+            <BottomNavigationAction label="Hjem" icon={<Home />} ></BottomNavigationAction>
+            <BottomNavigationAction label="Afhentninger"  icon={<ListAlt />}></BottomNavigationAction>
             <BottomNavigationAction label="Profil" icon={<AccountBox />}></BottomNavigationAction>
         </BottomNavigation>
     )

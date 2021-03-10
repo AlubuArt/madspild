@@ -1,0 +1,14 @@
+.home-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 112px);
+    overflow: auto;
+    text-align: center;
+}
+
+.MuiFab-label {
+    color:rgb(131, 205, 131);
+    label: "heh"
+    
+}
