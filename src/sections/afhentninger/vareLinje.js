@@ -24,18 +24,18 @@ const VareLinje = (props) => {
                                         <p>{props.mængde}{props.mængdeEnhed}</p>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <p>kl.{props.tidsrum}</p>
+                                    <p>{props.tidsrum}</p>
                                 </Grid>
-                                <Grid item xs={1} component="div">
-                                  <DeleteOutlinedIcon />
+                                <Grid item xs={1} component="div" >
+                                  <DeleteOutlinedIcon onClick={props.slet}/>
                                 </Grid>
-                                <Grid item xs={1} component="div">
-                                   <EditIcon />
+                                <Grid item xs={1} component="div" >
+                                   <EditIcon onClick={props.rediger}/>
                                 </Grid>
 
                              </Grid>
 
-                        </Card> 
+        </Card> 
     )
 }
 

@@ -4,17 +4,19 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { CardActionArea, CardHeader, Grid } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
+import { CardActionArea, Grid, Modal } from '@material-ui/core';
 import './opretafhentning.css'
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
-import EditIcon from '@material-ui/icons/Edit';
 import VareLinje from './vareLinje';
+import React from 'react';
+
+
 
 
 const OpretAfhentning = () => {
 
+    
     const [afhentning, setAfhentning] = useState()
+    const [modal, setModal] = useState(false)
     const [varer, setVarer] = useState([{
                                 title: "Salat",
                                 mængde: "50",
@@ -33,18 +35,51 @@ const OpretAfhentning = () => {
                                 tidsrum: "08.00-16.00"
                         }])
 
+    const sletVare = () => {
+        
+    }
 
-   
+    const redigerVare = () => {
+        
+    }
+
+    const tilføjTilAfhentninger = () => {
+
+
+    }
+
+    const handleModalClose = () => {
+
+        setModal(false);
+    }
 
     useEffect(() => {
 
     })
-
-
     
 
+    const body = (
+        <div >
+          <h2 id="simple-modal-title">Text in a modal</h2>
+          <p id="simple-modal-description">
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </p>
+          
+        </div>
+      );
+
+
+    //TODO modal
     return (
         <div>
+            <Modal
+                open={modal}
+                onClose={handleModalClose}
+            >
+                {body}
+
+            </Modal>
+
             <Card className="opret-afhentning-card">
                 <CardActionArea>
                     <CardContent>
@@ -73,12 +108,27 @@ const OpretAfhentning = () => {
                                             mængdeEnhed={vare.mængdeEnhed}
                                             tidsrum={vare.tidsrum}
                                             key={i}
+                                            slet={sletVare}
+                                            rediger={redigerVare}
+                                            
                                         />
                             })
                         }
-                        
-                    </CardContent>  
-                </CardActionArea>
+
+                    
+                    </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                    
+                        <Button onClick={(e) => setModal(true)}size="small" color="primary">
+                            Tilføj en vare mere
+                        </Button>
+                         <Button onClick={tilføjTilAfhentninger} size="small" color="primary">
+                            Opret afhentningen
+                        </Button>   
+                       
+                    </CardActions>  
+                
                 
             </Card>
         </div>
