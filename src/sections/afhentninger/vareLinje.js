@@ -27,10 +27,10 @@ const VareLinje = (props) => {
                                     <p>{props.tidsrum}</p>
                                 </Grid>
                                 <Grid item xs={1} component="div" >
-                                  <DeleteOutlinedIcon onClick={props.slet}/>
-                                </Grid>
-                                <Grid item xs={1} component="div" >
                                    <EditIcon onClick={props.rediger}/>
+                                </Grid> 
+                                <Grid item xs={1} component="div" >
+                                  <DeleteOutlinedIcon onClick={props.slet}/>
                                 </Grid>
 
                              </Grid>

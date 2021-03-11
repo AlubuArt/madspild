@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, state} from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,6 +8,7 @@ import { CardActionArea, Grid, Modal } from '@material-ui/core';
 import './opretafhentning.css'
 import VareLinje from './vareLinje';
 import React from 'react';
+import ModalBody from './modalBody'
 
 
 
@@ -17,6 +18,7 @@ const OpretAfhentning = () => {
     
     const [afhentning, setAfhentning] = useState()
     const [modal, setModal] = useState(false)
+    const [val, setVal] = useState()
     const [varer, setVarer] = useState([{
                                 title: "Salat",
                                 mængde: "50",
@@ -58,27 +60,20 @@ const OpretAfhentning = () => {
     })
     
 
-    const body = (
-        <div >
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
-          
-        </div>
-      );
+    
 
 
-    //TODO modal
+    
     return (
         <div>
-            <Modal
+
+
+            <ModalBody
                 open={modal}
                 onClose={handleModalClose}
-            >
-                {body}
-
-            </Modal>
+                
+                
+            />
 
             <Card className="opret-afhentning-card">
                 <CardActionArea>
