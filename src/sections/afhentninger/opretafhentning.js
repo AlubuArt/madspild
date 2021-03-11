@@ -1,4 +1,4 @@
-import {useEffect, useState, state} from 'react';
+import {useEffect, useState} from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -19,26 +19,16 @@ const OpretAfhentning = () => {
     const [afhentning, setAfhentning] = useState()
     const [modal, setModal] = useState(false)
     const [val, setVal] = useState()
-    const [varer, setVarer] = useState([{
-                                title: "Salat",
-                                mængde: "50",
-                                mængdeEnhed: "kg",
-                                tidsrum: "08.00-16.00"
-                            },
-                            {
-                                title: "Salat",
-                                mængde: "50",
-                                mængdeEnhed: "kg",
-                                tidsrum: "08.00-16.00"
-                            },{
-                                title: "Salat",
-                                mængde: "50",
-                                mængdeEnhed: "kg",
-                                tidsrum: "08.00-16.00"
-                        }])
+    
+    const [modalData, setModalData] = useState({})
+    const [varer, setVarer] = useState([])
 
-    const sletVare = () => {
-        
+    const sletVare = (i) => {
+      
+        console.log(i)
+        const tempArr = [...varer]
+        tempArr.splice(i, 1)
+        setVarer(tempArr)
     }
 
     const redigerVare = () => {
@@ -47,23 +37,21 @@ const OpretAfhentning = () => {
 
     const tilføjTilAfhentninger = () => {
 
-
     }
 
     const handleModalClose = () => {
-
+        
         setModal(false);
+        
     }
 
-    useEffect(() => {
+    const addVarerToList = (data) => {
+        setModalData(data)
+        console.log(modalData)
+        varer.push(modalData)
+    }
 
-    })
-    
 
-    
-
-
-    
     return (
         <div>
 
@@ -71,6 +59,8 @@ const OpretAfhentning = () => {
             <ModalBody
                 open={modal}
                 onClose={handleModalClose}
+                modalData={addVarerToList}
+
                 
                 
             />
@@ -103,7 +93,7 @@ const OpretAfhentning = () => {
                                             mængdeEnhed={vare.mængdeEnhed}
                                             tidsrum={vare.tidsrum}
                                             key={i}
-                                            slet={sletVare}
+                                            slet={() => sletVare(i)}
                                             rediger={redigerVare}
                                             
                                         />
