@@ -16,10 +16,8 @@ import ModalBody from './modalBody'
 const OpretAfhentning = () => {
 
     
-    const [afhentning, setAfhentning] = useState()
-    const [modal, setModal] = useState(false)
-    const [val, setVal] = useState()
     
+    const [modal, setModal] = useState(false)
     const [modalData, setModalData] = useState({})
     const [varer, setVarer] = useState([])
 
@@ -46,11 +44,11 @@ const OpretAfhentning = () => {
     }
 
     const addVarerToList = (data) => {
-        setModalData(data)
-        console.log(modalData)
-        varer.push(modalData)
+        
+        varer.push(data)
     }
 
+    
 
     return (
         <div>

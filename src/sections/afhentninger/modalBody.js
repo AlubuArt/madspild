@@ -11,18 +11,15 @@ const ModalBody = (props) => {
         title: '',
         mængdeEnhed: '',
         mængde: '',
-        tidsrum: '',
+        tidsrum: ''
         
     })
 
     const tilføjVaren = () => {
-        
+        console.log("tilføjet vare")
         props.modalData(vareInformationer);
-        setVareinformationer({title: '',
-        mængdeEnhed: '',
-        mængde: '',
-        tidsrum: ''})
         props.onClose()
+        
     }
 
     return (
@@ -51,7 +48,7 @@ const ModalBody = (props) => {
                     <label>Tidsrum for afhentning</label>
                     <input onChange={(e) => setVareinformationer({tidsrum: e.target.value})}></input>
                 </form>
-                <button onClick={tilføjVaren}>GEM</button>
+                <button onClick={(e) => tilføjVaren()}>GEM</button>
 
         
             </div> 
