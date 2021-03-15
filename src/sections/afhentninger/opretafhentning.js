@@ -9,46 +9,47 @@ import './opretafhentning.css'
 import VareLinje from './vareLinje';
 import React from 'react';
 import ModalBody from './modalBody'
+import ls, {get,set} from "local-storage";
+import {addAfhentningToDataBase, getvarerFromDB} from '../../service/firebase.service'
 
 
 
 
 const OpretAfhentning = () => {
 
-    
-    
     const [modal, setModal] = useState(false)
-    const [modalData, setModalData] = useState({})
     const [varer, setVarer] = useState([])
+    const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'))
+
 
     const sletVare = (i) => {
-      
-        console.log(i)
         const tempArr = [...varer]
         tempArr.splice(i, 1)
         setVarer(tempArr)
     }
 
-    const redigerVare = () => {
-        
+    const redigerVare = (i) => {
+        setModal(true)
     }
 
     const tilføjTilAfhentninger = () => {
-
+         
     }
 
     const handleModalClose = () => {
-        
         setModal(false);
-        
     }
 
-    const addVarerToList = (data) => {
-        
-        varer.push(data)
+    const getVarer = async () => {
+       const varerList = await getvarerFromDB(currentAfhentning);
+       setVarer(varerList)
+
     }
 
-    
+    useEffect(() => {
+        getVarer();
+    }, [])
+
 
     return (
         <div>
@@ -57,9 +58,7 @@ const OpretAfhentning = () => {
             <ModalBody
                 open={modal}
                 onClose={handleModalClose}
-                modalData={addVarerToList}
-
-                
+                currentAfhentning={currentAfhentning}
                 
             />
 
@@ -89,10 +88,9 @@ const OpretAfhentning = () => {
                                             title={vare.title}
                                             mængde={vare.mængde}
                                             mængdeEnhed={vare.mængdeEnhed}
-                                            tidsrum={vare.tidsrum}
                                             key={i}
                                             slet={() => sletVare(i)}
-                                            rediger={redigerVare}
+                                            rediger={() => redigerVare(i)}
                                             
                                         />
                             })
@@ -104,7 +102,7 @@ const OpretAfhentning = () => {
                     <CardActions>
                     
                         <Button onClick={(e) => setModal(true)}size="small" color="primary">
-                            Tilføj en vare mere
+                            Tilføj en vare 
                         </Button>
                          <Button onClick={tilføjTilAfhentninger} size="small" color="primary">
                             Opret afhentningen

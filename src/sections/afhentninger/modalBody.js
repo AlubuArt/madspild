@@ -2,6 +2,7 @@ import { useReducer} from 'react';
 import { Modal } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
+import {addAfhentningToDataBase, addVarerToAfhentning} from '../../service/firebase.service'
 
 
 
@@ -11,22 +12,21 @@ const ModalBody = (props) => {
         title: '',
         mængdeEnhed: '',
         mængde: '',
-        tidsrum: ''
-        
+       
     })
 
     const tilføjVaren = () => {
-        console.log("tilføjet vare")
-        props.modalData(vareInformationer);
+        
+        addVarerToAfhentning(vareInformationer, props.currentAfhentning);
         props.onClose()
         
     }
+
 
     return (
 
         <Modal  open={props.open}
                 onClose={props.onClose}>
-
             <div className="modalBody">
                 <h2 id="simple-modal-title">Opret en vare</h2>
                     <p id="simple-modal-description">
@@ -34,7 +34,7 @@ const ModalBody = (props) => {
                     </p>
                 <form>
                     <label>Varens type</label>
-                    <input onChange={(e) => setVareinformationer({title: e.target.value})}></input>
+                    <input  onChange={(e) => setVareinformationer({title: e.target.value})}></input>
                 </form>
                 <form>
                     <label>Mængde enhed</label>
@@ -43,10 +43,6 @@ const ModalBody = (props) => {
                 <form>
                     <label>Mængde</label>
                     <input onChange={(e) => setVareinformationer({mængde: e.target.value})}></input>
-                </form>
-                <form>
-                    <label>Tidsrum for afhentning</label>
-                    <input onChange={(e) => setVareinformationer({tidsrum: e.target.value})}></input>
                 </form>
                 <button onClick={(e) => tilføjVaren()}>GEM</button>
 
