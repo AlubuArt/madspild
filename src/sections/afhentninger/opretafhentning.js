@@ -21,22 +21,13 @@ const OpretAfhentning = () => {
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
-    const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'))
+    const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
+    
 
 
     const sletVare = (vareID) => {
-
         deleteVarerFromAfhentning(currentAfhentning, vareID);
         getVarer();
-        
-    }
-
-    const redigerVare = (i) => {
-        setModal(true)
-    }
-
-    const tilføjTilAfhentninger = () => {
-        setAfhentningToActive(currentAfhentning, )
     }
 
     const handleModalClose = () => {
@@ -51,7 +42,6 @@ const OpretAfhentning = () => {
     const getVarer = async () => {
        const varerList = await getvarerFromDB(currentAfhentning);
        setVarer(varerList)
-
     }
 
     const clearVarerList = () => {
@@ -60,13 +50,10 @@ const OpretAfhentning = () => {
 
     return (
         <div>
-
-
             <ModalBody
                 open={modal}
                 onClose={handleModalClose}
                 currentAfhentning={currentAfhentning}
-                
             />
 
             <AfslutModal 
@@ -74,7 +61,6 @@ const OpretAfhentning = () => {
                 onClose={handleAfslutModalClose}
                 currentAfhentning={currentAfhentning}
                 close={clearVarerList}
-
             />
 
             <Card className="opret-afhentning-card">
@@ -83,7 +69,6 @@ const OpretAfhentning = () => {
                         <Typography gutterBottom variant="h5">
                            Opret ny afhentning
                         </Typography> 
-                        
                             <Grid container>
                                 <Grid item xs={4} component="div">
                                     <p>Type</p>
@@ -94,20 +79,15 @@ const OpretAfhentning = () => {
                                 <Grid item xs={4} component="div">
                                     <p>Tidsrum</p>
                                 </Grid>
-                                
                             </Grid>
-                        
                         {
                             varer.map((vare, i) => {
                                 return <VareLinje 
-                                            title={vare.title}
-                                            mængde={vare.mængde}
-                                            mængdeEnhed={vare.mængdeEnhed}
-                                            key={i}
-                                            slet={() => 
-                                                sletVare(vare.id)}
-                                            rediger={() => redigerVare(i)}
-                                            
+                                        title={vare.title}
+                                        mængde={vare.mængde}
+                                        mængdeEnhed={vare.mængdeEnhed}
+                                        key={i}
+                                        slet={() => sletVare(vare.id)}
                                         />
                             })
                         }
@@ -116,7 +96,6 @@ const OpretAfhentning = () => {
                     </CardContent>
                     </CardActionArea>
                     <CardActions>
-                    
                         <Button onClick={(e) => setModal(true)}size="small" color="primary">
                             Tilføj en vare 
                         </Button>

@@ -10,16 +10,13 @@ const VareLinje = (props) => {
 
         <Card spacing={2}xs="12">
             <Grid container >
-                <Grid item xs={4} component="div">
+                <Grid item xs={5} component="div">
                     <p>{props.title}</p>
                 </Grid>
-                <Grid item xs={4} component="div">
+                <Grid item xs={5} component="div">
                     <p>{props.mængde}{props.mængdeEnhed}</p>
                 </Grid>
-                    <Grid item xs={2} component="div" >
-                    <EditIcon onClick={props.rediger}/>
-                </Grid> 
-                    <Grid item xs={2} component="div" >
+                <Grid item xs={2} component="div" >
                     <DeleteOutlinedIcon onClick={props.slet}/>
                 </Grid>
             </Grid>
