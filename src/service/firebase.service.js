@@ -3,7 +3,6 @@ import {dbRef, db} from '../service/firebase.config';
 const collRef = db.collection('overskudsmad');
 
 export const addAfhentningToDataBase = async () => {
-
     const docRef = await collRef.add(afhentning);
     return docRef.id;
 
@@ -32,7 +31,6 @@ export const getvarerFromDB = async (currentAfhentning) => {
         })
     })
     return result;
-
 }
 
 
@@ -40,6 +38,30 @@ export const deleteVarerFromAfhentning = (currentAfhentning, docID) => {
     db.collection('overskudsmad/' + currentAfhentning + '/varer').doc(docID).delete();
 
 }
+
+export const setAfhentningToActive = (currentAfhentning, data) => {
+    const ref = collRef.doc(currentAfhentning).update(data)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const afhentning = ({
 

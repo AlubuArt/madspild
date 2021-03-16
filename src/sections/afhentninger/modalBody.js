@@ -22,7 +22,6 @@ const ModalBody = (props) => {
         
     }
 
-
     return (
 
         <Modal  open={props.open}

@@ -9,8 +9,9 @@ import './opretafhentning.css'
 import VareLinje from './vareLinje';
 import React from 'react';
 import ModalBody from './modalBody'
+import AfslutModal from './afslutAfhentning';
 import ls, {get,set} from "local-storage";
-import {addAfhentningToDataBase, deleteVarerFromAfhentning, getvarerFromDB} from '../../service/firebase.service'
+import { deleteVarerFromAfhentning, getvarerFromDB, setAfhentningToActive} from '../../service/firebase.service'
 
 
 
@@ -18,6 +19,7 @@ import {addAfhentningToDataBase, deleteVarerFromAfhentning, getvarerFromDB} from
 const OpretAfhentning = () => {
 
     const [modal, setModal] = useState(false)
+    const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'))
 
@@ -34,19 +36,26 @@ const OpretAfhentning = () => {
     }
 
     const tilføjTilAfhentninger = () => {
-         
+        setAfhentningToActive(currentAfhentning, )
     }
 
     const handleModalClose = () => {
-        
         getVarer();
         setModal(false);
+    }
+
+    const handleAfslutModalClose = () => {
+        setAfslutModal(false)
     }
 
     const getVarer = async () => {
        const varerList = await getvarerFromDB(currentAfhentning);
        setVarer(varerList)
 
+    }
+
+    const clearVarerList = () => {
+        setVarer([])
     }
 
     return (
@@ -60,11 +69,19 @@ const OpretAfhentning = () => {
                 
             />
 
+            <AfslutModal 
+                open={afslutModal}
+                onClose={handleAfslutModalClose}
+                currentAfhentning={currentAfhentning}
+                close={clearVarerList}
+
+            />
+
             <Card className="opret-afhentning-card">
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom variant="h5">
-                           Aktuel afhentning
+                           Opret ny afhentning
                         </Typography> 
                         
                             <Grid container>
@@ -103,7 +120,7 @@ const OpretAfhentning = () => {
                         <Button onClick={(e) => setModal(true)}size="small" color="primary">
                             Tilføj en vare 
                         </Button>
-                         <Button onClick={tilføjTilAfhentninger} size="small" color="primary">
+                         <Button onClick={(e) => setAfslutModal(true)} size="small" color="primary">
                             Opret afhentningen
                         </Button>   
                        
