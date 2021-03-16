@@ -5,29 +5,41 @@ const collRef = db.collection('overskudsmad');
 export const addAfhentningToDataBase = async () => {
 
     const docRef = await collRef.add(afhentning);
-    docRef.collection('varer').add({dummy: ''})
-    console.log("Document oprette i DB:" + docRef.id)
     return docRef.id;
 
 }
 
 
-
 export const addVarerToAfhentning =   (data, currentAfhentning) => {
 
     const varerRef =  collRef.doc(currentAfhentning).collection('varer').doc();
-    varerRef.set(data); 
+    varerRef.set({
+        title: data.title,
+        mængdeEnhed: data.mængdeEnhed,
+        mængde: data.mængde,
+        id: varerRef.id
+    }); 
+    
 }
 
-export const getvarerFromDB = (currentAfhentning) => {
+export const getvarerFromDB = async (currentAfhentning) => {
 
-    const listOfVarer = [];
-    const listRef = collRef.doc(currentAfhentning).collection('varer');
-    listOfVarer.push(listRef);
-    return listOfVarer;
+    const result = []
+    const ref = db.collection('overskudsmad/' + currentAfhentning + '/varer')
+    await ref.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            result.push(doc.data());
+        })
+    })
+    return result;
 
 }
 
+
+export const deleteVarerFromAfhentning = (currentAfhentning, docID) => {
+    db.collection('overskudsmad/' + currentAfhentning + '/varer').doc(docID).delete();
+
+}
 
 const afhentning = ({
 

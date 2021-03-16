@@ -10,7 +10,7 @@ import VareLinje from './vareLinje';
 import React from 'react';
 import ModalBody from './modalBody'
 import ls, {get,set} from "local-storage";
-import {addAfhentningToDataBase, getvarerFromDB} from '../../service/firebase.service'
+import {addAfhentningToDataBase, deleteVarerFromAfhentning, getvarerFromDB} from '../../service/firebase.service'
 
 
 
@@ -22,10 +22,11 @@ const OpretAfhentning = () => {
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'))
 
 
-    const sletVare = (i) => {
-        const tempArr = [...varer]
-        tempArr.splice(i, 1)
-        setVarer(tempArr)
+    const sletVare = (vareID) => {
+
+        deleteVarerFromAfhentning(currentAfhentning, vareID);
+        getVarer();
+        
     }
 
     const redigerVare = (i) => {
@@ -37,6 +38,8 @@ const OpretAfhentning = () => {
     }
 
     const handleModalClose = () => {
+        
+        getVarer();
         setModal(false);
     }
 
@@ -45,11 +48,6 @@ const OpretAfhentning = () => {
        setVarer(varerList)
 
     }
-
-    useEffect(() => {
-        getVarer();
-    }, [])
-
 
     return (
         <div>
@@ -89,7 +87,8 @@ const OpretAfhentning = () => {
                                             mængde={vare.mængde}
                                             mængdeEnhed={vare.mængdeEnhed}
                                             key={i}
-                                            slet={() => sletVare(i)}
+                                            slet={() => 
+                                                sletVare(vare.id)}
                                             rediger={() => redigerVare(i)}
                                             
                                         />

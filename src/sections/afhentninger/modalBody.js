@@ -2,7 +2,7 @@ import { useReducer} from 'react';
 import { Modal } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
-import {addAfhentningToDataBase, addVarerToAfhentning} from '../../service/firebase.service'
+import {addVarerToAfhentning} from '../../service/firebase.service'
 
 
 
