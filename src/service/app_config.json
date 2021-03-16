@@ -1,0 +1,12 @@
+{
+        "firebase" : {
+                "apiKey": "AIzaSyBNgT8JIrTLYoMxx_TW4DFki7kx_j1330w",
+                "authDomain":"madspild-8ca40.firebaseapp.com",
+                "databaseURL": "https://madspild-8ca40-default-rtdb.europe-west1.firebasedatabase.app",
+                "projectId": "madspild-8ca40",
+                "storageBucket": "madspild-8ca40.appspot.com",
+                "messagingSenderId": "904062858444",
+                "appId":"1:904062858444:web:2dc718c62858ce4178be69",
+                "measurementId": "G-6PHPYW27CN"
+}
+}

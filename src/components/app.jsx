@@ -13,7 +13,7 @@ import OpretAfhentning from "../sections/afhentninger/opretafhentning";
 const AppLayout = (props) => {
 
     const [value, setValue] = useState(0)
-
+    //would love to change this routing to react-router
     const renderView = () => {
         switch(value) {
             case 0:
