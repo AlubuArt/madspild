@@ -5,6 +5,7 @@ import HomeScreen from "../sections/home/homeScreen";
 import Afhentninger from "../sections/afhentninger/afhentninger";
 import Profile from "../sections/profil/profile";
 import OpretAfhentning from "../sections/afhentninger/opretafhentning";
+import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning"
 
 
 
@@ -13,17 +14,20 @@ import OpretAfhentning from "../sections/afhentninger/opretafhentning";
 const AppLayout = (props) => {
 
     const [value, setValue] = useState(0)
+    
     //would love to change this routing to react-router
     const renderView = () => {
         switch(value) {
             case 0:
               return <HomeScreen value={value} onChange={setValue}/>;
             case 1:
-              return <Afhentninger />
+              return <Afhentninger value={value} onChange={setValue}/>
             case 2: 
               return <Profile />
             case 3: 
               return <OpretAfhentning />
+            case 4:
+              return <RedigerAfhentning />
           }
     }
 

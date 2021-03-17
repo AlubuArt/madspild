@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useReducer} from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,19 +9,20 @@ import './opretafhentning.css'
 import VareLinje from './vareLinje';
 import React from 'react';
 import ModalBody from './modalBody'
-import AfslutModal from './afslutAfhentning';
+import RedigerModal from './redigerModal';
 import ls, {get,set} from "local-storage";
-import { deleteVarerFromAfhentning, getvarerFromDB, setAfhentningToActive} from '../../service/firebase.service'
+import { deleteVarerFromAfhentning, getvarerFromDB, getAfhentningFromDatabase} from '../../service/firebase.service'
 
 
 
 
-const OpretAfhentning = () => {
+const RedigerAfhentning = () => {
 
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
+    const [afhentningData, setAfhentningData] = useState('1')
     
 
 
@@ -41,12 +42,32 @@ const OpretAfhentning = () => {
 
     const getVarer = async () => {
        const varerList = await getvarerFromDB(currentAfhentning);
+       const afhent = await getAfhentningFromDatabase(currentAfhentning);
+       setAfhentningData(afhent)
        setVarer(varerList)
     }
 
     const clearVarerList = () => {
         setVarer([])
     }
+
+    function returnModal() {
+        if(afhentningData !== '1') {
+            return <RedigerModal 
+                open={afslutModal}
+                onClose={handleAfslutModalClose}
+                currentAfhentning={currentAfhentning}
+                close={clearVarerList}
+                data={afhentningData}
+                modalTitle={'Redigér afhentning'}
+                
+            />
+        }
+    }
+
+    useState(() => {
+        getVarer();
+    })
 
     return (
         <div>
@@ -55,21 +76,14 @@ const OpretAfhentning = () => {
                 onClose={handleModalClose}
                 currentAfhentning={currentAfhentning}
             />
-
-            <AfslutModal 
-                open={afslutModal}
-                onClose={handleAfslutModalClose}
-                currentAfhentning={currentAfhentning}
-                close={clearVarerList}
-                data={'2'}
-                modalTitle="Færdiggør afhentning"
-            />
+            
+            {returnModal()}
 
             <Card className="opret-afhentning-card">
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom variant="h5">
-                           Opret ny afhentning
+                           Redigér afhentning
                         </Typography> 
                             <Grid container>
                                 <Grid item xs={4} component="div">
@@ -102,7 +116,7 @@ const OpretAfhentning = () => {
                             Tilføj en vare 
                         </Button>
                          <Button onClick={(e) => setAfslutModal(true)} size="small" color="primary">
-                            Opret afhentningen
+                            Gem
                         </Button>   
                        
                     </CardActions>  
@@ -113,4 +127,4 @@ const OpretAfhentning = () => {
     )
 }
 
-export default OpretAfhentning;
+export default RedigerAfhentning;

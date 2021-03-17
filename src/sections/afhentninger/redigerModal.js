@@ -7,28 +7,29 @@ import { DateTimePicker} from "@material-ui/pickers";
 import {setAfhentningToActive} from '../../service/firebase.service'
 
 
-const AfslutModal = (props) => {
+const RedigerModal = (props) => {
 
-    const [afhentesFra, setAfhentesFra] = useState(new Date("2021-01-01T00:00:00.000Z"));
+    const [afhentesFra, setAfhentesFra] = useState(Date.parse(props.data.afhentesFra));
     const [afhentesTil, setAfhentesTil] = useState(new Date("2021-01-01T00:00:00.000Z"));
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
-        afhentningssted: '',
-        aktiv: true,
-        booketStatus: 'ikke booket',
-        kontaktPerson: '',
-        leverandør: '',
-        tidsrumFra: afhentesFra,
-        tidsrumTil: afhentesTil
+        afhentningssted: props.data.afhentningssted,
+        aktiv: props.data.aktiv,
+        booketStatus: props.data.booketStatus,
+        kontaktPerson: props.data.kontaktPerson,
+        leverandør: props.data.leverandør,
+        tidsrumFra: props.data.afhentesFra,
+        tidsrumTil: props.data.afhentesTil
 
     })
     const afslut = () => {
-        setAfhentningsInformation(afhentningsInformation)
-        setAfhentningToActive(props.currentAfhentning, afhentningsInformation)
-        alert("afhentningen blev oprettet")
         props.onClose()
         props.close()
     }
 
+    useState(() => {
+        setAfhentningsInformation(props.data)
+        
+    },[])
     return (
         <Modal  open={props.open}
                 onClose={props.onClose}>
@@ -38,13 +39,13 @@ const AfslutModal = (props) => {
                         Indtast de sidste oplysninger, før du færdiggør afhentningen
                     </p>
                 <form>
-                    <input placeholder="Leverandørnavn"  onChange={(e) => setAfhentningsInformation({leverandør: e.target.value})} ></input>
+                    <input placeholder="Leverandørnavn"  defaultValue={afhentningsInformation.leverandør} onChange={(e) => setAfhentningsInformation({leverandør: e.target.value})} ></input>
                 </form>
                 <form>
-                    <input placeholder="Kontaktperson" onChange={(e) => setAfhentningsInformation({kontaktPerson: e.target.value})}></input>
+                    <input placeholder="Kontaktperson" defaultValue={afhentningsInformation.kontaktPerson} onChange={(e) => setAfhentningsInformation({kontaktPerson: e.target.value})}></input>
                 </form>
                 <form>
-                    <input placeholder="Afhentningssted"  onChange={(e) => setAfhentningsInformation({afhentningssted: e.target.value})}></input>
+                    <input placeholder="Afhentningssted"defaultValue={afhentningsInformation.afhentningssted} onChange={(e) => setAfhentningsInformation({afhentningssted: e.target.value})}></input>
                 </form>
                 <form>
                 
@@ -53,7 +54,6 @@ const AfslutModal = (props) => {
                     label="Afhentes fra"
                     value={afhentesFra}
                     onChange={setAfhentesFra}
-                    
                     
                     
                     
@@ -67,6 +67,7 @@ const AfslutModal = (props) => {
                     value={afhentesTil}
                     onChange={setAfhentesTil}
                     
+                    
                 />
                 </form>
                 
@@ -77,4 +78,5 @@ const AfslutModal = (props) => {
 }
 
 
-export default AfslutModal;
+export default RedigerModal;
+
