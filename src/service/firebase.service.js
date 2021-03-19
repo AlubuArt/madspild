@@ -15,11 +15,11 @@ export const addAfhentningToDataBase = async () => {
         booketStatus: false,
         kontaktPerson: '',
         leverandør: '',
-        tidsrum: '',
+        tidsrumFra: '',
+        tidsrumTil: '',
         id: docRef.id
     })
     return docRef.id;
-
 }
 
 
@@ -31,7 +31,6 @@ export const addVarerToAfhentning =   (data, currentAfhentning) => {
         mængde: data.mængde,
         id: varerRef.id
     }); 
-    
 }
 
 export const getvarerFromDB = async (currentAfhentning) => {
@@ -45,7 +44,6 @@ export const getvarerFromDB = async (currentAfhentning) => {
     return result;
 }
 
-
 export const deleteVarerFromAfhentning = (currentAfhentning, docID) => {
     db.collection('overskudsmad/' + currentAfhentning + '/varer').doc(docID).delete();
     return
@@ -57,9 +55,9 @@ export const setAfhentningToActive = (currentAfhentning, data) => {
 
 export const getAfhentningFromDatabase = async (currentAfhentning) => {
     const ref = await collRef.doc(currentAfhentning).get();
+    console.log(ref.data())
     return ref.data();
 }
-
 
 export const getAfhentningerFromDatabase = async () => {
 
@@ -82,7 +80,6 @@ export const sletAfhentningFraDatabase = (docID) => {
         })
     
     })
-
     return
 }
 

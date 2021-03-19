@@ -4,12 +4,13 @@ import './opretafhentning.css'
 import React from 'react';
 import { useState } from "react";
 import { DateTimePicker} from "@material-ui/pickers";
-import {setAfhentningToActive} from '../../service/firebase.service'
+
+var parse = require('date-fns/parse')
 
 
 const RedigerModal = (props) => {
 
-    const [afhentesFra, setAfhentesFra] = useState(Date.parse(props.data.afhentesFra));
+    const [afhentesFra, setAfhentesFra] = useState(new Date("2021-01-01T00:00:00.000Z"));
     const [afhentesTil, setAfhentesTil] = useState(new Date("2021-01-01T00:00:00.000Z"));
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningssted: props.data.afhentningssted,

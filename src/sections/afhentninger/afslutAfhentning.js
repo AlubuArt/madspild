@@ -4,8 +4,17 @@ import './opretafhentning.css'
 import React from 'react';
 import { useState } from "react";
 import { DateTimePicker} from "@material-ui/pickers";
-import {setAfhentningToActive} from '../../service/firebase.service'
+import {setAfhentningToActive} from '../../service/firebase.service';
 
+const getToday = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+        return today;
+    }
 
 const AfslutModal = (props) => {
 
@@ -21,6 +30,10 @@ const AfslutModal = (props) => {
         tidsrumTil: afhentesTil
 
     })
+
+    
+
+    
     const afslut = () => {
         setAfhentningsInformation(afhentningsInformation)
         setAfhentningToActive(props.currentAfhentning, afhentningsInformation)
@@ -52,11 +65,7 @@ const AfslutModal = (props) => {
                     variant="inline"
                     label="Afhentes fra"
                     value={afhentesFra}
-                    onChange={setAfhentesFra}
-                    
-                    
-                    
-                    
+                    onChange={setAfhentesFra}  
                 />
                 </form>
                 <form>
@@ -66,7 +75,6 @@ const AfslutModal = (props) => {
                     label="Afhentes indtil"
                     value={afhentesTil}
                     onChange={setAfhentesTil}
-                    
                 />
                 </form>
                 

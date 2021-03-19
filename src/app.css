@@ -3,4 +3,9 @@
     overflow: auto;
     text-align: center;
     
+    
+}
+
+.App {
+    background: linear-gradient(to bottom right, red, yellow );
 }
