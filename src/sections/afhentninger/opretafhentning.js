@@ -72,15 +72,13 @@ const OpretAfhentning = () => {
                            Opret ny afhentning
                         </Typography> 
                             <Grid container>
-                                <Grid item xs={4} component="div">
+                                <Grid item xs={6} component="div">
                                     <p>Type</p>
                                 </Grid>
-                                <Grid item xs={2} component="div">
+                                <Grid item xs={4} component="div">
                                     <p>Mængde</p>
                                 </Grid>
-                                <Grid item xs={4} component="div">
-                                    <p>Tidsrum</p>
-                                </Grid>
+
                             </Grid>
                         {
                             varer.map((vare, i) => {
@@ -97,12 +95,13 @@ const OpretAfhentning = () => {
                     
                     </CardContent>
                     </CardActionArea>
-                    <CardActions>
-                        <Button onClick={(e) => setModal(true)}size="small" color="primary">
-                            Tilføj en vare 
+                    <CardActions >
+                        
+                        <Button variant="contained" onClick={(e) => setModal(true)}size="small" >
+                            Tilføj vare 
                         </Button>
-                         <Button onClick={(e) => setAfslutModal(true)} size="small" color="primary">
-                            Opret afhentningen
+                         <Button variant="contained" onClick={(e) => setAfslutModal(true)} size="small" >
+                            Opret
                         </Button>   
                        
                     </CardActions>  

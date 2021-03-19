@@ -49,6 +49,8 @@ export const deleteVarerFromAfhentning = (currentAfhentning, docID) => {
     return
 }
 
+
+
 export const setAfhentningToActive = (currentAfhentning, data) => {
     const ref = collRef.doc(currentAfhentning).update(data)
 }

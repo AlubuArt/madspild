@@ -1,4 +1,4 @@
-import { useReducer} from 'react';
+import { useReducer, useState} from 'react';
 import { Modal } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
@@ -8,6 +8,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import InputBase from '@material-ui/core/InputBase';
+import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -20,6 +24,7 @@ const ModalBody = (props) => {
         mængde: '',
        
     })
+    const [enhed, setEnhed] = useState([])
 
     const tilføjVaren = () => {
         
@@ -27,6 +32,13 @@ const ModalBody = (props) => {
         props.onClose()
         
     }
+
+    const enheder = [
+        'Kg',
+        'Palle'
+    ]
+
+   
 
     return (
 
@@ -37,19 +49,33 @@ const ModalBody = (props) => {
                     <p id="simple-modal-description">
                         Her kan du tilføje en vare til din afhentning
                     </p>
-                <form>
-                    <label>Varens type</label>
-                    <input  onChange={(e) => setVareinformationer({title: e.target.value})}></input>
-                </form>
-                <form>
-                    <label>Mængde enhed</label>
-                    <input onChange={(e) => setVareinformationer({mængdeEnhed: e.target.value})}></input>
-                </form>
-                <form>
-                    <label>Mængde</label>
-                    <input onChange={(e) => setVareinformationer({mængde: e.target.value})}></input>
-                </form>
-                <button onClick={(e) => tilføjVaren()}>GEM</button>
+                    <div >
+                       <TextField id="standard-basic" label="Varens type" onChange={(e) => setVareinformationer({title: e.target.value})}/> 
+                    </div>
+                    
+                    <FormControl >
+                        <InputLabel>MængdeEnhed</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={vareInformationer.mængdeEnhed}
+                            onChange={(e) => setVareinformationer({mængdeEnhed: e.target.value})}
+                        >
+                        <MenuItem value={"Kg"} >Kg</MenuItem> 
+                        <MenuItem value={"Palle"} >Palle</MenuItem> 
+                            
+                        </Select>
+
+                    </FormControl>
+                    
+                    <div>
+                        <TextField id="standard-basic" label="Mængde" onChange={(e) => setVareinformationer({mængde: e.target.value})}/>
+                    </div>
+                   
+                    
+                
+                
+                <Button variant="contained" onClick={(e) => tilføjVaren()}>GEM</Button>
 
         
             </div> 

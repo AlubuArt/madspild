@@ -17,7 +17,7 @@ const HomeScreen = ({value, onChange}) => {
    
     return (
         <>
-            <Container fluid="true">
+            <Container fluid="true" >
                 <div className="home-main-container">
                     <div className="add-container">
                         <Fab onClick={opretAfhentning} aria-label="add">
