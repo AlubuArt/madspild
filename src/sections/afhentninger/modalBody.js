@@ -118,11 +118,6 @@ const ModalBody = (props) => {
 
                     </FormControl>
                    </div>  
-                    
-                        
-                   
-                    
-                
                 <div>
                    <Button style={{marginTop: '20px'}}variant="contained" onClick={(e) => tilføjVaren()}>GEM</Button> 
                 </div>
