@@ -17,10 +17,6 @@ const Afhentninger = ({value, onChange}) => {
         onChange(4)
     }
 
-    
-
-    
-
     useState(() => {
         getAfhentninger()
 

@@ -1,26 +1,22 @@
 import { useReducer, useState} from 'react';
-import { CardActionArea, Checkbox, Modal } from '@material-ui/core';
+import { CardActionArea, Modal } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
 import {addVarerToAfhentning} from '../../service/firebase.service'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
-import createMixins from '@material-ui/core/styles/createMixins';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
-import CardHeader from '@material-ui/core/CardHeader';
 import cx from 'clsx';
 import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -132,15 +128,7 @@ const ModalBody = (props) => {
                 </div>
                     </CardContent>
                     </CardActionArea>
-                        
-                
-                    
-                       
-
-        
-            
                     </Card>
-             
         </Modal>
         
 
