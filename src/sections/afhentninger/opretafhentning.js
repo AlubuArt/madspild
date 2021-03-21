@@ -1,27 +1,58 @@
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import Card from '@material-ui/core/Card';
+import cx from 'clsx';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { CardActionArea, Grid, Modal } from '@material-ui/core';
+import { CardActionArea } from '@material-ui/core';
 import './opretafhentning.css'
-import VareLinje from './vareLinje';
 import React from 'react';
 import ModalBody from './modalBody'
+import CardHeader from '@material-ui/core/CardHeader';
 import AfslutModal from './afslutAfhentning';
-import ls, {get,set} from "local-storage";
-import { deleteVarerFromAfhentning, getvarerFromDB, setAfhentningToActive} from '../../service/firebase.service'
+import { makeStyles } from '@material-ui/core/styles';
+import { deleteVarerFromAfhentning, getvarerFromDB} from '../../service/firebase.service'
+import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
+import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableBody from '@material-ui/core/TableBody';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 
+const useStyles = makeStyles(({ spacing }) => ({
+    card: {
+      marginTop: 40,
+      borderRadius: spacing(0.5),
+      transition: '0.3s',
+      width: '95%',
+      overflow: 'initial',
+      background: '#ffffff',
+    },
+    content: {
+      paddingTop: 0,
+      textAlign: 'left',
+      overflowX: 'auto',
+      '& table': {
+        marginBottom: 0,
+      }
+    },
+  }));
 
 
 const OpretAfhentning = () => {
 
+    const classes = useStyles();
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
+    const cardHeaderStyles = useContainedCardHeaderStyles();
+    const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
+    const cardHeaderShadowStyles = useFadedShadowStyles();
     
 
 
@@ -54,6 +85,7 @@ const OpretAfhentning = () => {
                 open={modal}
                 onClose={handleModalClose}
                 currentAfhentning={currentAfhentning}
+               
             />
 
             <AfslutModal 
@@ -65,32 +97,41 @@ const OpretAfhentning = () => {
                 modalTitle="Færdiggør afhentning"
             />
 
-            <Card className="opret-afhentning-card">
+            <Card className={cx(classes.card, cardShadowStyles.root)}>
+            <CardHeader
+                className={cardHeaderShadowStyles.root}
+                classes={cardHeaderStyles}
+                title={'Opret afhentning'}
+                subheader={'Tilføj varer til afhentningen'}
+            />
                 <CardActionArea>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5">
-                           Opret ny afhentning
-                        </Typography> 
-                            <Grid container>
-                                <Grid item xs={6} component="div">
-                                    <p>Type</p>
-                                </Grid>
-                                <Grid item xs={4} component="div">
-                                    <p>Mængde</p>
-                                </Grid>
-
-                            </Grid>
-                        {
-                            varer.map((vare, i) => {
-                                return <VareLinje 
-                                        title={vare.title}
-                                        mængde={vare.mængde}
-                                        mængdeEnhed={vare.mængdeEnhed}
-                                        key={i}
-                                        slet={() => sletVare(vare.id)}
-                                        />
-                            })
-                        }
+        <CardContent className={classes.content}>
+                    <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Varetype</TableCell>
+              <TableCell align="right">Mængde</TableCell>
+              <TableCell align="right"></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {varer.map(vare => (
+              <TableRow key={vare.id}>
+                <TableCell component="th" scope="row">
+                  {vare.title}
+                </TableCell>
+                <TableCell align="right">{vare.mængde} {vare.mængdeEnhed}</TableCell>
+                <TableCell align="right">
+                    <DeleteOutlinedIcon onClick={(e) => sletVare}/> 
+                </TableCell>
+               
+                
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+                        
+                            
 
                     
                     </CardContent>

@@ -1,13 +1,13 @@
 .content-container {
     height: calc(100vh - 112px);
     overflow: auto;
-    text-align: center;
+    text-align: left;
     
     
 }
 
 .App {
-    background: linear-gradient(to bottom right, rgb(156, 227, 156), rgb(157, 180, 55) );
+    background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(255, 255, 255) );
    
 }
 

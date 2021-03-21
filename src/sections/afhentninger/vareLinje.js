@@ -14,8 +14,6 @@ const StyledCard = withStyles({
 
 const VareLinje = (props) => {
 
-    
-
     return (
 
         <StyledCard classes={{label: "my-class-label"}} spacing={2}xs="12" component="div">
