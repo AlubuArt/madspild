@@ -130,10 +130,6 @@ const OpretAfhentning = () => {
             ))}
           </TableBody>
         </Table>
-                        
-                            
-
-                    
                     </CardContent>
                     </CardActionArea>
                     <CardActions >

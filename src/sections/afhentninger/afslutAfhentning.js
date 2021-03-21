@@ -109,13 +109,13 @@ const AfslutModal = (props) => {
                             className={classes.textField}
                             id="standard-basic" 
                             label="Afhentningssted" 
-                            onChange={(e) => setAfhentningsInformation({Afhentningssted: e.target.value})}>
+                            onChange={(e) => setAfhentningsInformation({afhentningssted: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Kontaktperson" 
-                            onChange={(e) => setAfhentningsInformation({Kontaktperson: e.target.value})}>
+                            onChange={(e) => setAfhentningsInformation({kontaktPerson: e.target.value})}>
                         </TextField>
                         <DateTimePicker
                             variant="inline"
