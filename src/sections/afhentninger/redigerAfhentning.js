@@ -12,8 +12,37 @@ import ModalBody from './modalBody'
 import RedigerModal from './redigerModal';
 import ls, {get,set} from "local-storage";
 import { deleteVarerFromAfhentning, getvarerFromDB, getAfhentningFromDatabase} from '../../service/firebase.service'
+import { makeStyles } from '@material-ui/core/styles';
+import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
+import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
+import CardHeader from '@material-ui/core/CardHeader';
+import cx from 'clsx';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
-
+const useStyles = makeStyles(({ spacing }) => ({
+    card: {
+      marginTop: 40,
+      borderRadius: spacing(0.5),
+      transition: '0.3s',
+      width: '95%',
+      overflow: 'initial',
+      background: '#ffffff',
+    },
+    content: {
+      paddingTop: 0,
+      textAlign: 'left',
+      overflowX: 'auto',
+      '& table': {
+        marginBottom: 0,
+      }
+    },
+  }));
 
 
 const RedigerAfhentning = () => {
@@ -23,6 +52,10 @@ const RedigerAfhentning = () => {
     const [varer, setVarer] = useState([])
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
     const [afhentningData, setAfhentningData] = useState('1')
+    const cardHeaderStyles = useContainedCardHeaderStyles();
+    const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
+    const cardHeaderShadowStyles = useFadedShadowStyles();
+    const classes = useStyles();
     
 
 
@@ -79,45 +112,46 @@ const RedigerAfhentning = () => {
             
             {returnModal()}
 
-            <Card className="opret-afhentning-card">
+            <Card className={cx(classes.card, cardShadowStyles.root)}>
+            <CardHeader
+                className={cardHeaderShadowStyles.root}
+                classes={cardHeaderStyles}
+                title={'Redigér afhentning'}
+                subheader={'Tilføj flere varer til afhentningen, eller slet varer i afhentningen'}
+            />
                 <CardActionArea>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5">
-                           Redigér afhentning
-                        </Typography> 
-                            <Grid container>
-                                <Grid item xs={4} component="div">
-                                    <p>Type</p>
-                                </Grid>
-                                <Grid item xs={2} component="div">
-                                    <p>Mængde</p>
-                                </Grid>
-                                <Grid item xs={4} component="div">
-                                    <p>Tidsrum</p>
-                                </Grid>
-                            </Grid>
-                        {
-                            varer.map((vare, i) => {
-                                return <VareLinje 
-                                        title={vare.title}
-                                        mængde={vare.mængde}
-                                        mængdeEnhed={vare.mængdeEnhed}
-                                        key={i}
-                                        slet={() => sletVare(vare.id)}
-                                        />
-                            })
-                        }
-
-                    
+                    <CardContent className={classes.content}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                <TableCell>Varetype</TableCell>
+                                <TableCell align="right">Mængde</TableCell>
+                                <TableCell align="right"></TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {varer.map(vare => (
+                                <TableRow key={vare.id}>
+                                    <TableCell component="th" scope="row">
+                                    {vare.title}
+                                    </TableCell>
+                                    <TableCell align="right">{vare.mængde} {vare.mængdeEnhed}</TableCell>
+                                    <TableCell align="right">
+                                        <DeleteOutlinedIcon onClick={(e) => sletVare}/> 
+                                    </TableCell>
+                                </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
                     </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button onClick={(e) => setModal(true)}size="small" color="primary">
-                            Tilføj en vare 
+                        <Button variant="contained" onClick={(e) => setModal(true)}size="small" >
+                            Tilføj vare 
                         </Button>
-                         <Button onClick={(e) => setAfslutModal(true)} size="small" color="primary">
-                            Gem
-                        </Button>   
+                         <Button variant="contained" onClick={(e) => setAfslutModal(true)} size="small" >
+                            Opret
+                        </Button>  
                        
                     </CardActions>  
                 
