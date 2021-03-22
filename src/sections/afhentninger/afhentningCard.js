@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ spacing }) => ({
       borderRadius: spacing(0.5),
       transition: '0.3s',
       width: '95%',
-      overflow: 'initial',
+     // overflow: 'initial',
       background: '#ffffff',
     },
     content: {
