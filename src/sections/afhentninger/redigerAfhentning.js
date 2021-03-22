@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ spacing }) => ({
       borderRadius: spacing(0.5),
       transition: '0.3s',
       width: '95%',
-      overflow: 'initial',
+     // overflow: 'initial',
       background: '#ffffff',
     },
     content: {
@@ -150,12 +150,9 @@ const RedigerAfhentning = () => {
                             Tilføj vare 
                         </Button>
                          <Button variant="contained" onClick={(e) => setAfslutModal(true)} size="small" >
-                            Opret
+                            Gem
                         </Button>  
-                       
                     </CardActions>  
-                
-                
             </Card>
         </div>
     )

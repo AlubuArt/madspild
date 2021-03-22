@@ -24,7 +24,7 @@ const useStyles = makeStyles(({ spacing }) => ({
       borderRadius: spacing(0.5),
       transition: '0.3s',
       width: '95%',
-      overflow: 'initial',
+      //overflow: 'initial',
       background: '#ffffff',
     },
     content: {
@@ -77,7 +77,7 @@ const ModalBody = (props) => {
 
         <Modal  open={props.open}
                 onClose={props.onClose}
-                style={{ alignItems: "center", justifyContent: "center", marginTop: '150px', BackdropProps: {opacity: '0.90'}}}
+                style={{ alignItems: "center", justifyContent: "center", BackdropProps: {opacity: '0.90'}}}
                
         >
                     <Card className={cx(classes.card, cardShadowStyles.root)}>
