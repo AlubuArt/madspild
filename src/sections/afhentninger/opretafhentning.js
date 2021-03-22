@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import Card from '@material-ui/core/Card';
 import cx from 'clsx';
 import CardActions from '@material-ui/core/CardActions';
@@ -21,6 +21,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import EditIcon from '@material-ui/icons/Edit';
 
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -56,14 +57,16 @@ const OpretAfhentning = () => {
     
 
 
-    const sletVare = (vareID) => {
+    const sletVare =  (vareID) => {
+      
         deleteVarerFromAfhentning(currentAfhentning, vareID);
         getVarer();
     }
 
     const handleModalClose = () => {
-        getVarer();
+        
         setModal(false);
+        getVarer();
     }
 
     const handleAfslutModalClose = () => {
@@ -78,6 +81,16 @@ const OpretAfhentning = () => {
     const clearVarerList = () => {
         setVarer([])
     }
+
+    const redigerVare = () => {
+
+    }
+
+
+    useEffect(() => {
+        getVarer();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, [modal, varer])
 
     return (
         <div>
@@ -120,10 +133,14 @@ const OpretAfhentning = () => {
                 <TableCell component="th" scope="row">
                   {vare.title}
                 </TableCell>
-                <TableCell align="right">{vare.mængde} {vare.mængdeEnhed}</TableCell>
-                <TableCell align="right">
-                    <DeleteOutlinedIcon onClick={(e) => sletVare}/> 
+                <TableCell align="center">{vare.mængde} {vare.mængdeEnhed}</TableCell>
+                <TableCell align="right" size="small" >
+                  <EditIcon onClick={(e) => redigerVare} />
                 </TableCell>
+                <TableCell align="center" size="small" padding="none">
+                    <DeleteOutlinedIcon onClick={(e) => sletVare(vare.id)}/> 
+                </TableCell>
+                
                
                 
               </TableRow>
