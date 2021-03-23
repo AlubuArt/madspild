@@ -23,11 +23,11 @@ const AppLayout = (props) => {
             case 1:
               return <Afhentninger value={value} onChange={setValue}/>
             case 2: 
-              return <Profile />
+              return <Profile value={value} onChange={setValue}/>
             case 3: 
-              return <OpretAfhentning />
+              return <OpretAfhentning value={value} onChange={setValue}/>
             case 4:
-              return <RedigerAfhentning />
+              return <RedigerAfhentning value={value} onChange={setValue}/>
           }
     }
 

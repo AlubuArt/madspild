@@ -60,7 +60,7 @@ const AfslutModal = (props) => {
     const [afhentesTil, setAfhentesTil] = useState(new Date("2021-01-01T00:00:00.000Z"));
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningssted: '',
-        aktiv: true,
+        aktiv: "oprettet",
         booketStatus: 'ikke booket',
         kontaktPerson: '',
         leverandør: '',
@@ -70,17 +70,18 @@ const AfslutModal = (props) => {
     })
 
     const afslut = () => {
-        setAfhentningsInformation(afhentningsInformation)
+        /* setAfhentningsInformation(afhentningsInformation) */
         setAfhentningToActive(props.currentAfhentning, afhentningsInformation)
         
         setDialogOpen(true)
     }
 
-    const handleClose = () => {
-        setDialogOpen(false)
-        props.onClose()
+    const handleSave = () => {
         props.close()
+        setDialogOpen(false)
     }
+
+    
 
     return (
         
@@ -138,7 +139,7 @@ const AfslutModal = (props) => {
                     
                 <Dialog
                 open={dialogOpen}
-                onClose={handleClose}
+                onClose={(e) => setDialogOpen(false)}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -149,7 +150,7 @@ const AfslutModal = (props) => {
                     </DialogContentText>
                 </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={handleSave} color="primary">
                     OK
                     </Button>
             </DialogActions>

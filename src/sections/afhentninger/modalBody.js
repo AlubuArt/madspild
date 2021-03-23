@@ -60,17 +60,16 @@ const ModalBody = (props) => {
     const [enhed, setEnhed] = useState([])
 
     const tilføjVaren = () => {
-        
         addVarerToAfhentning(vareInformationer, props.currentAfhentning);
         props.onClose()
         
     }
 
+
     const enheder = [
         'Kg',
         'Palle'
     ]
-
    
 
     return (
@@ -93,18 +92,11 @@ const ModalBody = (props) => {
                             <TextField className={classes.textField} id="standard-basic" label="Varens type" onChange={(e) => setVareinformationer({title: e.target.value})}/> 
                         </div>
                         <div>
-
-                       
-                        <TextField className={classes.textField} id="standard-basic" label="Mængde" onChange={(e) => setVareinformationer({mængde: e.target.value})}/>
+                            <TextField className={classes.textField} id="standard-basic" label="Mængde" onChange={(e) => setVareinformationer({mængde: e.target.value})}/>
                     </div> 
-                    
                         <InputLabel className={classes.select}>Mængde Enhed</InputLabel>
-                    
                    <div>
-                       
-                  
                         <FormControl >
-                            
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -113,9 +105,7 @@ const ModalBody = (props) => {
                         >
                         <MenuItem value={"Kg"} >Kg</MenuItem> 
                         <MenuItem value={"Palle"} >Palle</MenuItem> 
-                            
                         </Select>
-
                     </FormControl>
                    </div>  
                 <div>

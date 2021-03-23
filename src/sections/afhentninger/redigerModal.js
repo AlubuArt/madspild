@@ -18,6 +18,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {setAfhentningToActive} from '../../service/firebase.service'
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
@@ -46,7 +47,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
         picker: {
             marginTop: '20px'
         }
-      }));
+    }));
 
 
 
@@ -70,15 +71,17 @@ const RedigerModal = (props) => {
 
     })
     const afslut = () => {
-        props.onClose()
-        props.close()
+        setAfhentningToActive(props.currentAfhentning, afhentningsInformation)
+        setDialogOpen(true)
     }
 
     const handleClose = () => {
         setDialogOpen(false)
         props.onClose()
-        props.close()
+        
     }
+
+    
 
     useState(() => {
         setAfhentningsInformation(props.data)
@@ -139,7 +142,6 @@ const RedigerModal = (props) => {
                     </CardContent>
                 </CardActionArea>
             </Card>
-                    
                 <Dialog
                 open={dialogOpen}
                 onClose={handleClose}

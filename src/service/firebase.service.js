@@ -10,7 +10,7 @@ export const addAfhentningToDataBase = async () => {
             aftager: '',
             kontrakr: ''
         },
-        aktiv: false,
+        aktiv: "ikke oprettet",
         betingelser: 'standard betingelser gælder',
         booketStatus: false,
         kontaktPerson: '',
@@ -49,7 +49,16 @@ export const deleteVarerFromAfhentning = (currentAfhentning, docID) => {
     return
 }
 
+export const redigerVareInDatabase = (currentAfhentning, docID) => {
+    db.collection('overskudsmad/' + currentAfhentning + '/varer').doc(docID)
+}
 
+export const getSelectedVareFromDatabase = async (currentAfhentning, docID) => {
+    const ref =  db.collection('overskudsmad/' + currentAfhentning + '/varer');
+    const selected = await ref.doc(docID).get()
+    console.log(selected.data())
+   
+}
 
 export const setAfhentningToActive = (currentAfhentning, data) => {
     const ref = collRef.doc(currentAfhentning).update(data)
@@ -62,7 +71,6 @@ export const getAfhentningFromDatabase = async (currentAfhentning) => {
 }
 
 export const getAfhentningerFromDatabase = async () => {
-
     const result = []
     await collRef.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
