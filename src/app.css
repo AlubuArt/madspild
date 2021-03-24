@@ -1,8 +1,9 @@
 .content-container {
-    height: calc(105vh - 112px);
+    height: calc(100vh - 48px);
     overflow: auto;
     text-align: left;
-    
+    margin: 0px;
+    padding: 0px;
     -webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
     
     
@@ -11,14 +12,12 @@
 
 .App {
     background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.982), rgb(231, 240, 229) );
+    margin: 0px;
+    padding: 0px;
    
 }
 
-.page-wrapper {
-    margin-left: 0px;
-}
-
-.content-container {
-    margin-left: 0px;
+body {
+    margin: 0px;
 }
 

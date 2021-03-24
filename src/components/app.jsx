@@ -33,14 +33,14 @@ const AppLayout = (props) => {
     }
 
     return (
-        
+        <>
             
-            <div className="page-wrapper">
+            
                 <div className="content-container">
                    {renderView()}
                 </div>
                 <BotNavigation value={value} onChange={setValue} />
-            </div>
+          </>  
         
     )
     
