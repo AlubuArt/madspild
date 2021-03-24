@@ -6,6 +6,7 @@ import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/co
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import CardHeader from '@material-ui/core/CardHeader';
+import './afhentninger.css';
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -33,7 +34,8 @@ const useStyles = makeStyles(({ spacing }) => ({
     },
     picker: {
         marginTop: '20px'
-    }
+    },
+   
   }));
 
 const Afhentninger = ({value, onChange}) => {
@@ -61,7 +63,7 @@ const Afhentninger = ({value, onChange}) => {
     }, [])
 
     return (
-        <div>
+        <div className="scroll-touch">
             
                 <CardHeader
                         className={cardHeaderShadowStyles.root}
