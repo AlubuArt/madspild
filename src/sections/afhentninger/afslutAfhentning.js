@@ -1,4 +1,4 @@
-import { useReducer} from 'react';
+import { useReducer, useEffect} from 'react';
 import { CardActionArea, Modal, TextField } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
@@ -19,6 +19,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { format, compareAsc } from 'date-fns'
+import toDate from 'date-fns/toDate'
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
@@ -56,8 +58,8 @@ const AfslutModal = (props) => {
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
     const [dialogOpen, setDialogOpen] = useState(false)
-    const [afhentesFra, setAfhentesFra] = useState(new Date("2021-01-01T00:00:00.000Z"));
-    const [afhentesTil, setAfhentesTil] = useState(new Date("2021-01-01T00:00:00.000Z"));
+    const [afhentesFra, setAfhentesFra] = useState('');
+    const [afhentesTil, setAfhentesTil] = useState('');
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningssted: '',
         aktiv: "oprettet",
@@ -81,7 +83,10 @@ const AfslutModal = (props) => {
         setDialogOpen(false)
     }
 
-    
+    useEffect(() => {
+        setAfhentningsInformation({tidsrumFra: afhentesFra})
+        setAfhentningsInformation({tidsrumTil: afhentesTil})
+    }, [afhentesFra, afhentesTil])
 
     return (
         

@@ -1,11 +1,13 @@
 import { Card, CardContent, CardActionArea, Typography, Button, CardActions } from "@material-ui/core";
 import { sletAfhentningFraDatabase } from "../../service/firebase.service";
 import RedigerAfhentningModal from './redigerAfhentning'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
+import toDate from 'date-fns/toDate'
+import fromUnixTime from 'date-fns/fromUnixTime'
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -33,6 +35,7 @@ const AfhentningCard = (props) => {
     const [afhentningID, setAfhentningID] = useState(props.data.id);
     const [modal, setModal] = useState(false);
     const classes = useStyles();
+     
 
     const sletAfhentning = () => {
         sletAfhentningFraDatabase(props.data.id)
@@ -44,16 +47,25 @@ const AfhentningCard = (props) => {
         props.rediger()
     }
 
+    const parseDates = (date) => {
+        const fra = fromUnixTime(date)
+        var dateAsString = fra.toString()
+        
+        return dateAsString
+    }
+
+    
+
     return (
         <div>
         <Card className={cx(classes.card, cardShadowStyles.root)}>
             <CardActionArea>
                 <CardContent className={classes.content}>
                     <Typography gutterBottom variant="body1">
-                        Afhentes fra:
+                        Afhentes fra: {parseDates(props.data.tidsrumFra.seconds)}
                     </Typography>
                     <Typography gutterBottom variant="body1">
-                        Afhentes til:
+                        Afhentes til: {parseDates(props.data.tidsrumTil.seconds)}
                     </Typography>
                     <Typography gutterBottom variant="body1">
                         Status: {props.data.aktiv}

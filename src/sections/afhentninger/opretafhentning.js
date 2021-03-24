@@ -21,8 +21,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
-import EditIcon from '@material-ui/icons/Edit';
-import {getSelectedVareFromDatabase} from '../../service/firebase.service'
+
 
 
 const useStyles = makeStyles(({ spacing}) => ({
