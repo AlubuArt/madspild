@@ -5,8 +5,7 @@ import HomeScreen from "../sections/home/homeScreen";
 import Afhentninger from "../sections/afhentninger/afhentninger";
 import Profile from "../sections/profil/profile";
 import OpretAfhentning from "../sections/afhentninger/opretafhentning";
-import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning"
-
+import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning";
 
 
 
@@ -14,6 +13,8 @@ import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning"
 const AppLayout = (props) => {
 
     const [value, setValue] = useState(0)
+    
+
     
     //would love to change this routing to react-router
     const renderView = () => {
@@ -38,7 +39,7 @@ const AppLayout = (props) => {
                 <div className="content-container">
                    {renderView()}
                 </div>
-                <BotNavigation  value={value} onChange={setValue} />
+                <BotNavigation value={value} onChange={setValue} />
             </div>
         
     )

@@ -2,15 +2,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 112px);
+    height: calc(50vh - 112px);
     overflow: auto;
     text-align: center;
     
     
 }
 
+.add-container-h3 {
+    color: rgba(65, 183, 57, 0.76);
+}
+
 .MuiFab-label {
-    color:rgb(131, 205, 131);
+    color:rgba(65, 183, 57, 0.76);
     
     
 }

@@ -1,5 +1,5 @@
 .content-container {
-    height: calc(100vh - 112px);
+    height: calc(105vh - 112px);
     overflow: auto;
     text-align: left;
     
@@ -18,3 +18,4 @@
 .content-container {
     margin-left: 0px;
 }
+
