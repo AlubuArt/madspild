@@ -1,4 +1,4 @@
-import { useReducer} from 'react';
+import { useReducer, useEffect} from 'react';
 import { CardActionArea, Modal, TextField } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
@@ -18,6 +18,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {setAfhentningToActive} from '../../service/firebase.service'
+import toDate from 'date-fns/toDate'
+import fromUnixTime from 'date-fns/fromUnixTime'
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
@@ -46,7 +49,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
         picker: {
             marginTop: '20px'
         }
-      }));
+    }));
 
 
 
@@ -57,33 +60,47 @@ const RedigerModal = (props) => {
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
     const [dialogOpen, setDialogOpen] = useState(false)
-    const [afhentesFra, setAfhentesFra] = useState(new Date("2021-01-01T00:00:00.000Z"));
-    const [afhentesTil, setAfhentesTil] = useState(new Date("2021-01-01T00:00:00.000Z"));
+    const [afhentesFra, setAfhentesFra] = useState(new Date(fromUnixTime(props.data.tidsrumFra.seconds)));
+    const [afhentesTil, setAfhentesTil] = useState(new Date(fromUnixTime(props.data.tidsrumTil.seconds)));
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningssted: props.data.afhentningssted,
         aktiv: props.data.aktiv,
         booketStatus: props.data.booketStatus,
         kontaktPerson: props.data.kontaktPerson,
         leverandør: props.data.leverandør,
-        tidsrumFra: props.data.afhentesFra,
-        tidsrumTil: props.data.afhentesTil
+        tidsrumFra: afhentesFra,
+        tidsrumTil: afhentesTil,
 
     })
     const afslut = () => {
-        props.onClose()
-        props.close()
+        setAfhentningToActive(props.currentAfhentning, afhentningsInformation)
+        setDialogOpen(true)
     }
 
     const handleClose = () => {
         setDialogOpen(false)
         props.onClose()
-        props.close()
+        
     }
 
-    useState(() => {
-        setAfhentningsInformation(props.data)
-        
+    const parseDates = (date) => {
+        const asDate = toDate(date)
+        console.log(asDate)
+        return asDate
+    }
+    
+
+    useEffect(() => {
+        setAfhentningsInformation(props.data) 
+        console.log(fromUnixTime(props.data.tidsrumTil.seconds))
     },[])
+
+    useEffect(() => {
+        setAfhentningsInformation({tidsrumFra: afhentesFra})
+        setAfhentningsInformation({tidsrumTil: afhentesTil})
+    }, [afhentesFra, afhentesTil])
+
+
     return (
         <Modal  open={props.open}
                 onClose={props.onClose}
@@ -139,7 +156,6 @@ const RedigerModal = (props) => {
                     </CardContent>
                 </CardActionArea>
             </Card>
-                    
                 <Dialog
                 open={dialogOpen}
                 onClose={handleClose}

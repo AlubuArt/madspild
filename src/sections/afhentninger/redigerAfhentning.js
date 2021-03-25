@@ -45,7 +45,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   }));
 
 
-const RedigerAfhentning = () => {
+const RedigerAfhentning = ({value, onChange}) => {
 
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
@@ -71,6 +71,8 @@ const RedigerAfhentning = () => {
 
     const handleAfslutModalClose = () => {
         setAfslutModal(false)
+        onChange(1)
+        setVarer([])
     }
 
     const getVarer = async () => {
@@ -80,17 +82,14 @@ const RedigerAfhentning = () => {
        setVarer(varerList)
     }
 
-    const clearVarerList = () => {
-        setVarer([])
-    }
+
 
     function returnModal() {
         if(afhentningData !== '1') {
             return <RedigerModal 
                 open={afslutModal}
-                onClose={handleAfslutModalClose}
-                currentAfhentning={currentAfhentning}
-                close={clearVarerList}
+                onClose={handleAfslutModalClose}                
+                currentAfhentning={currentAfhentning}                
                 data={afhentningData}
                 modalTitle={'Redigér afhentning'}
                 
@@ -104,11 +103,11 @@ const RedigerAfhentning = () => {
 
     return (
         <div>
-            <ModalBody
+            {/* <ModalBody
                 open={modal}
                 onClose={handleModalClose}
                 currentAfhentning={currentAfhentning}
-            />
+            /> */}
             
             {returnModal()}
 

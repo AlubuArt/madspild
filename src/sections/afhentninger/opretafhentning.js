@@ -21,10 +21,10 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
-import EditIcon from '@material-ui/icons/Edit';
 
 
-const useStyles = makeStyles(({ spacing }) => ({
+
+const useStyles = makeStyles(({ spacing}) => ({
     card: {
       marginTop: 40,
       borderRadius: spacing(0.5),
@@ -44,12 +44,13 @@ const useStyles = makeStyles(({ spacing }) => ({
   }));
 
 
-const OpretAfhentning = () => {
+const OpretAfhentning = ({value, onChange}) => {
 
     const classes = useStyles();
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
+    const [selectedVare, setSelectedVare] = useState('')
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
@@ -79,18 +80,24 @@ const OpretAfhentning = () => {
     }
 
     const clearVarerList = () => {
+        setCurrentAfhentning('')
         setVarer([])
+        setAfslutModal(false)
+        onChange(0)
+
     }
 
-    const redigerVare = () => {
-
-    }
+    /* const redigerVare = async (vareID) => {
+        const s = getSelectedVareFromDatabase(currentAfhentning, vareID)
+        setSelectedVare(s)
+        setModal(true)
+    } */
 
 
     useEffect(() => {
         getVarer();
      // eslint-disable-next-line react-hooks/exhaustive-deps
-     }, [modal, varer])
+     }, [modal])
 
     return (
         <div>
@@ -98,6 +105,7 @@ const OpretAfhentning = () => {
                 open={modal}
                 onClose={handleModalClose}
                 currentAfhentning={currentAfhentning}
+              //  selectedVare={selectedVare}
                
             />
 
@@ -114,10 +122,10 @@ const OpretAfhentning = () => {
             <CardHeader
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
-                title={'Opret afhentning'}
+                title={'Opret ny afhentning'}
                 subheader={'Tilføj varer til afhentningen'}
             />
-                <CardActionArea>
+        <CardActionArea>
         <CardContent className={classes.content}>
                     <Table>
           <TableHead>
@@ -134,9 +142,9 @@ const OpretAfhentning = () => {
                   {vare.title}
                 </TableCell>
                 <TableCell align="center">{vare.mængde} {vare.mængdeEnhed}</TableCell>
-                <TableCell align="right" size="small" >
-                  <EditIcon onClick={(e) => redigerVare} />
-                </TableCell>
+                {/* <TableCell align="right" size="small" >
+                  <EditIcon onClick={(e) => redigerVare(vare.id)} />
+                </TableCell> */}
                 <TableCell align="center" size="small" padding="none">
                     <DeleteOutlinedIcon onClick={(e) => sletVare(vare.id)}/> 
                 </TableCell>
