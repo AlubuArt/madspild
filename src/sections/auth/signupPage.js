@@ -73,11 +73,12 @@ const SignupPage = ({value, onChange}) => {
     const redirectToHomePageAfterSuccess = async () => {
         try{
             await firebase_app.auth().signInWithEmailAndPassword(profileData.kontaktEmail, pass);
-            onChange(0)
+            
 
         } catch (error) {
             console.log(error)
         }
+        onChange(2)
     }
 
 

@@ -1,6 +1,7 @@
 import {dbRef, db} from '../service/firebase.config';
 
 const collRef = db.collection('overskudsmad');
+const collUser = db.collection('users')
 
 export const addAfhentningToDataBase = async () => {
     const docRef = await collRef.add({});
@@ -91,5 +92,29 @@ export const sletAfhentningFraDatabase = (docID) => {
     
     })
     return
+}
+
+
+export const updateUserDataInDatabase = (userData, userID) => {
+    var ref = collUser.doc(userID);
+    ref.set({
+        virksomhedsCVR: userData.virksomhedsCVR,
+        adresse: userData.adresse,
+        tidsrum: userData.tidsrum,
+        kontaktPerson: userData.kontaktPerson,
+        note: userData.note,
+        kontaktEmail: userData.kontaktEmail,
+        virksomhedsNavn: userData.virksomhedsNavn, 
+    }, {merge: true})
+
+}
+
+export const getUserData = async (userID) => {
+    var data; 
+    var ref = collUser.doc(userID);
+    await ref.get().then((doc) => {
+        data = doc.data();
+    })
+    return data;
 }
 
