@@ -62,7 +62,7 @@ const SignupPage = ({value, onChange}) => {
     const signup = async () => {
         onChange(0)
         try {
-          await signupUserInDatabase(profileData.kontaktEmail, pass); 
+          await signupUserInDatabase(profileData, pass); 
         } catch (error) {
             console.log(error)
         }
