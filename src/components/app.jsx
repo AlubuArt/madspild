@@ -7,13 +7,14 @@ import Profile from "../sections/profil/profile";
 import OpretAfhentning from "../sections/afhentninger/opretafhentning";
 import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning";
 import SignupPage from "../sections/auth/signupPage"
+import LoginPage from "../sections/auth/loginPage"
 
 
 
 
 const AppLayout = (props) => {
 
-    const [value, setValue] = useState(5)
+    const [value, setValue] = useState(6)
     
 
     
@@ -32,6 +33,8 @@ const AppLayout = (props) => {
               return <RedigerAfhentning value={value} onChange={setValue}/>
             case 5: 
               return <SignupPage value={value} onChange={setValue}/>
+            case 6: 
+              return <LoginPage value={value} onChange={setValue}/>
           }
     }
 

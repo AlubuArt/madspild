@@ -24,3 +24,13 @@ export const signupUserInDatabase = async (data, pass) => {
     localStorage.setItem('token', token)
 
 }
+
+
+export const loginUser = async (email, pass) => {
+
+    const loggedInUser = await firebase_app.auth().signInWithEmailAndPassword(email, pass);
+    const uid = loggedInUser.user.uid;
+    localStorage.setItem('userID', uid);
+    localStorage.setItem('token', token);
+    
+}
