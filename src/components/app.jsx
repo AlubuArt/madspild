@@ -6,13 +6,14 @@ import Afhentninger from "../sections/afhentninger/afhentninger";
 import Profile from "../sections/profil/profile";
 import OpretAfhentning from "../sections/afhentninger/opretafhentning";
 import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning";
+import SignupPage from "../sections/auth/signupPage"
 
 
 
 
 const AppLayout = (props) => {
 
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(5)
     
 
     
@@ -29,6 +30,8 @@ const AppLayout = (props) => {
               return <OpretAfhentning value={value} onChange={setValue}/>
             case 4:
               return <RedigerAfhentning value={value} onChange={setValue}/>
+            case 5: 
+              return <SignupPage value={value} onChange={setValue}/>
           }
     }
 
