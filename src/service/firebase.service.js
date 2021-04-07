@@ -20,7 +20,9 @@ export const addAfhentningToDataBase = async () => {
         leverandør: '',
         tidsrumFra: '',
         tidsrumTil: '',
-        id: docRef.id
+        id: docRef.id,
+        userID: ''
+        
     })
     return docRef.id;
 }
@@ -81,6 +83,19 @@ export const getAfhentningerFromDatabase = async () => {
         })
     })
     return result;
+}
+
+export const getUsersAfhentninger = async (userID) => {
+    const result = []
+    await collRef.where('userID', "==", userID).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            result.push(doc.data());
+        })
+    })
+    return result;
+
+
 }
 
 export const sletAfhentningFraDatabase = (docID) => {

@@ -71,7 +71,8 @@ const AfslutModal = (props) => {
         kontaktPerson: '',
         leverandør: '',
         tidsrumFra: afhentesFra,
-        tidsrumTil: afhentesTil
+        tidsrumTil: afhentesTil,
+        userID: ''
 
     })
 
@@ -93,8 +94,8 @@ const AfslutModal = (props) => {
     }
 
     useEffect(() => {
-        
-    })
+        setAfhentningsInformation({userID: userData.userID})
+    }, [userData])
 
     useEffect(() => {
         getUser();
