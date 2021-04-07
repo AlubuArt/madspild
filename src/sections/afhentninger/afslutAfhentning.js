@@ -58,8 +58,8 @@ const AfslutModal = (props) => {
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
     const [dialogOpen, setDialogOpen] = useState(false)
-    const [afhentesFra, setAfhentesFra] = useState('');
-    const [afhentesTil, setAfhentesTil] = useState('');
+    const [afhentesFra, setAfhentesFra] = useState(new Date());
+    const [afhentesTil, setAfhentesTil] = useState(new Date());
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningssted: '',
         aktiv: "oprettet",
