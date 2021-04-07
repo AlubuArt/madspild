@@ -100,6 +100,8 @@ export const updateUserDataInDatabase = (userData, userID) => {
     ref.set({
         virksomhedsCVR: userData.virksomhedsCVR,
         adresse: userData.adresse,
+        by: userData.by,
+        postnummer: userData.postnummer,
         tidsrum: userData.tidsrum,
         kontaktPerson: userData.kontaktPerson,
         note: userData.note,

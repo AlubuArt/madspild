@@ -53,6 +53,8 @@ const Profile = ({value, onChange}) => {
     const [userData, setUserData] = useReducer((value, newValue) => ({...value, ...newValue}), {
         virksomhedsCVR: '',
         adresse: '',
+        by: '',
+        postnummer: '',
         tidsrum: '',
         kontaktPerson: '',
         note: '',
@@ -135,9 +137,23 @@ const Profile = ({value, onChange}) => {
                         <TextField
                             className="form-control"
                             type="text"
-                            label="Afhentningssted"
+                            label="Afhentningsadresse"
                             value={userData.adresse}
                             onChange={(e) => setUserData({adresse: e.target.value})}
+                        />
+                        <TextField
+                            className="form-control"
+                            type="text"
+                            label="By"
+                            value={userData.by}
+                            onChange={(e) => setUserData({by: e.target.value})}
+                        />
+                        <TextField
+                            className="form-control"
+                            type="number"
+                            label="Postnummer"
+                            value={userData.postnummer}
+                            onChange={(e) => setUserData({postnummer: e.target.value})}
                         />
                         <TextField
                             className="form-control"

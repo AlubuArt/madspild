@@ -60,25 +60,27 @@ const SignupPage = ({value, onChange}) => {
     }
 
     const signup = async () => {
-        onChange(0)
+        
         try {
           await signupUserInDatabase(profileData, pass); 
+          console.log("sign up sucessfull")
+          redirectToHomePageAfterSuccess()
         } catch (error) {
             console.log(error)
         }
-        redirectToHomePageAfterSuccess()
+        
         
     }
 
     const redirectToHomePageAfterSuccess = async () => {
         try{
             await firebase_app.auth().signInWithEmailAndPassword(profileData.kontaktEmail, pass);
-            
+            onChange(2)
 
         } catch (error) {
             console.log(error)
         }
-        onChange(2)
+        
     }
 
 

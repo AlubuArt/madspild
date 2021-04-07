@@ -1,8 +1,6 @@
 import {firebase_app} from '../service/firebase.config'
 import 'firebase/storage';
 
-
-const token = 'lnnlnsa0cjejviue90vbpncasknerfcvubqqwnsocxdp'
 const db = firebase_app.firestore()
 const coll = db.collection('users/')
 
@@ -21,7 +19,7 @@ export const signupUserInDatabase = async (data, pass) => {
     })
 
     localStorage.setItem('userID', userID);
-    localStorage.setItem('token', token)
+    
 
 }
 
@@ -31,6 +29,6 @@ export const loginUser = async (email, pass) => {
     const loggedInUser = await firebase_app.auth().signInWithEmailAndPassword(email, pass);
     const uid = loggedInUser.user.uid;
     localStorage.setItem('userID', uid);
-    localStorage.setItem('token', token);
+    
     
 }

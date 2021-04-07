@@ -24,7 +24,7 @@ import toDate from 'date-fns/toDate'
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
-          marginTop: 40,
+          marginTop: 20,
           borderRadius: spacing(0.5),
           transition: '0.3s',
           width: '95%',
@@ -61,7 +61,9 @@ const AfslutModal = (props) => {
     const [afhentesFra, setAfhentesFra] = useState(new Date());
     const [afhentesTil, setAfhentesTil] = useState(new Date());
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
-        afhentningssted: '',
+        afhentningsadresse: '',
+        by: '',
+        postnummer: '',
         aktiv: "oprettet",
         booketStatus: 'ikke booket',
         kontaktPerson: '',
@@ -112,8 +114,20 @@ const AfslutModal = (props) => {
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
-                            label="Afhentningssted" 
-                            onChange={(e) => setAfhentningsInformation({afhentningssted: e.target.value})}>
+                            label="Afhentningsadresse" 
+                            onChange={(e) => setAfhentningsInformation({afhentningadresse: e.target.value})}>
+                        </TextField>
+                        <TextField 
+                            className={classes.textField}
+                            id="standard-basic" 
+                            label="By" 
+                            onChange={(e) => setAfhentningsInformation({by: e.target.value})}>
+                        </TextField>
+                        <TextField 
+                            className={classes.textField}
+                            id="standard-basic" 
+                            label="Postnummer" 
+                            onChange={(e) => setAfhentningsInformation({Postnummer: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
