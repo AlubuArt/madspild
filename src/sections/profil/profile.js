@@ -52,7 +52,7 @@ const Profile = ({value, onChange}) => {
     const [loggedInUser] = useState(localStorage.getItem('userID'))
     const [userData, setUserData] = useReducer((value, newValue) => ({...value, ...newValue}), {
         virksomhedsCVR: '',
-        adresse: '',
+        afhentningsadresse: '',
         by: '',
         postnummer: '',
         tidsrum: '',
@@ -138,8 +138,8 @@ const Profile = ({value, onChange}) => {
                             className="form-control"
                             type="text"
                             label="Afhentningsadresse"
-                            value={userData.adresse}
-                            onChange={(e) => setUserData({adresse: e.target.value})}
+                            value={userData.afhentningsadresse}
+                            onChange={(e) => setUserData({afhentningsadresse: e.target.value})}
                         />
                         <TextField
                             className="form-control"

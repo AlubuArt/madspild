@@ -63,7 +63,9 @@ const RedigerModal = (props) => {
     const [afhentesFra, setAfhentesFra] = useState(new Date(fromUnixTime(props.data.tidsrumFra.seconds)));
     const [afhentesTil, setAfhentesTil] = useState(new Date(fromUnixTime(props.data.tidsrumTil.seconds)));
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
-        afhentningssted: props.data.afhentningssted,
+        afhentningsadresse: props.data.afhentningsadresse,
+        by: props.data.by,
+        postnummer: props.data.postnummer,
         aktiv: props.data.aktiv,
         booketStatus: props.data.booketStatus,
         kontaktPerson: props.data.kontaktPerson,
@@ -83,11 +85,7 @@ const RedigerModal = (props) => {
         
     }
 
-    const parseDates = (date) => {
-        const asDate = toDate(date)
-        console.log(asDate)
-        return asDate
-    }
+    
     
 
     useEffect(() => {
@@ -125,9 +123,23 @@ const RedigerModal = (props) => {
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
-                            label="Afhentningssted" 
-                            defaultValue={afhentningsInformation.afhentningssted} 
-                            onChange={(e) => setAfhentningsInformation({afhentningssted: e.target.value})}>
+                            label="Afhentningsadresse" 
+                            defaultValue={afhentningsInformation.afhentningsadresse} 
+                            onChange={(e) => setAfhentningsInformation({afhentningsadresse: e.target.value})}>
+                        </TextField>
+                        <TextField 
+                            className={classes.textField}
+                            id="standard-basic" 
+                            label="By" 
+                            defaultValue={afhentningsInformation.by} 
+                            onChange={(e) => setAfhentningsInformation({by: e.target.value})}>
+                        </TextField>
+                        <TextField 
+                            className={classes.textField}
+                            id="standard-basic" 
+                            label="Postnummer" 
+                            defaultValue={afhentningsInformation.postnummer} 
+                            onChange={(e) => setAfhentningsInformation({postnummer: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}

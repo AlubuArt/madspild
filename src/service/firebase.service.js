@@ -6,7 +6,9 @@ const collUser = db.collection('users')
 export const addAfhentningToDataBase = async () => {
     const docRef = await collRef.add({});
     docRef.set({
-        afhentningssted: ' ',
+        afhentningsadresse: ' ',
+        by: '',
+        postnummer: '',
         aftale: {
             aftager: '',
             kontrakr: ''
@@ -99,7 +101,7 @@ export const updateUserDataInDatabase = (userData, userID) => {
     var ref = collUser.doc(userID);
     ref.set({
         virksomhedsCVR: userData.virksomhedsCVR,
-        adresse: userData.adresse,
+        afhentningsadresse: userData.afhentningsadresse,
         by: userData.by,
         postnummer: userData.postnummer,
         tidsrum: userData.tidsrum,
