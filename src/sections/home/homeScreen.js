@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import './home.css'
@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
+import {getUserData} from '../../service/firebase.service'
 
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -37,12 +38,25 @@ const HomeScreen = ({value, onChange}) => {
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
+    const [currentUser, setCurrentUser] = useState(localStorage.getItem('userID'))
+    const [userName, setUserName] = useState('')
 
     const opretAfhentning = async () => {
         const currentAfhentning = await addAfhentningToDataBase();
         localStorage.setItem('currentAfhentning', currentAfhentning); 
         onChange(3);
     }
+
+  const getUserName = async () => {
+    const userName = await getUserData(currentUser);
+    setUserName(userName.virksomhedsNavn)
+  }
+
+  useEffect(() => {
+
+
+    getUserName()
+  }, [])    
    
     return (
         <>
@@ -51,7 +65,7 @@ const HomeScreen = ({value, onChange}) => {
                     className={cardHeaderShadowStyles.root}
                     classes={cardHeaderStyles}
                     title={'Velkommen'}
-                    subheader={'Har du noget overskudsmad der kan afhentes? Så start med at oprette en ny afhentning, så potentielle aftagere kan se og booke din afhentning.'}
+                    subheader={'Har i noget overskudsmad der kan afhentes? Så start med at oprette en ny afhentning, så potentielle aftagere kan se og booke din afhentning.'}
                     />
                 <div className="home-main-container">
                     <div className="add-container">

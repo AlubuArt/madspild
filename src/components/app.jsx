@@ -15,6 +15,8 @@ import LoginPage from "../sections/auth/loginPage"
 const AppLayout = (props) => {
 
     const [value, setValue] = useState(6);
+    const [currentUser, setCurrentUser] = useState(null)
+    const [authenticated, setAuthenticated] = useState(false)
 
     
 
@@ -42,7 +44,12 @@ const AppLayout = (props) => {
 
     useEffect(() => {
 
-    })
+      setAuthenticated(JSON.parse(localStorage.getItem("authenticated")))
+      if(authenticated) {
+        setValue(0)
+      }
+
+    },[authenticated] )
 
     return (
         <>

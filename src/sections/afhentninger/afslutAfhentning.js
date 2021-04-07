@@ -4,7 +4,7 @@ import './opretafhentning.css'
 import React from 'react';
 import { useState } from "react";
 import { DateTimePicker} from "@material-ui/pickers";
-import {setAfhentningToActive} from '../../service/firebase.service';
+import {getUserData, setAfhentningToActive} from '../../service/firebase.service';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
@@ -60,6 +60,8 @@ const AfslutModal = (props) => {
     const [dialogOpen, setDialogOpen] = useState(false)
     const [afhentesFra, setAfhentesFra] = useState(new Date());
     const [afhentesTil, setAfhentesTil] = useState(new Date());
+    const [currentUser, setCurrentUser] = useState(localStorage.getItem('userID'));
+    const [userData, setUserData] = useState('')
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningsadresse: '',
         by: '',
@@ -85,7 +87,17 @@ const AfslutModal = (props) => {
         setDialogOpen(false)
     }
 
+    const getUser = async () => {
+        const user = await getUserData(currentUser);
+        setUserData(user);
+    }
+
     useEffect(() => {
+        
+    })
+
+    useEffect(() => {
+        getUser();
         setAfhentningsInformation({tidsrumFra: afhentesFra})
         setAfhentningsInformation({tidsrumTil: afhentesTil})
     }, [afhentesFra, afhentesTil])
@@ -109,30 +121,35 @@ const AfslutModal = (props) => {
                             className={classes.textField}
                             id="standard-basic" 
                             label="Leverandørnavn" 
+                            value={userData.virksomhedsNavn}
                             onChange={(e) => setAfhentningsInformation({leverandør: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Afhentningsadresse" 
-                            onChange={(e) => setAfhentningsInformation({afhentningadresse: e.target.value})}>
+                            value={userData.afhentningsadresse}
+                            onChange={(e) => setAfhentningsInformation({afhentningsadresse: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="By" 
+                            value={userData.by}
                             onChange={(e) => setAfhentningsInformation({by: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Postnummer" 
-                            onChange={(e) => setAfhentningsInformation({Postnummer: e.target.value})}>
+                            value={userData.postnummer}
+                            onChange={(e) => setAfhentningsInformation({postnummer: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Kontaktperson" 
+                            value={userData.kontaktPerson}
                             onChange={(e) => setAfhentningsInformation({kontaktPerson: e.target.value})}>
                         </TextField>
                         <DateTimePicker
