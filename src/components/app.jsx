@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState, useEffect } from "react"
 import BotNavigation from "../routing/bottomNavigation"
 import HomeScreen from "../sections/home/homeScreen";
 import Afhentninger from "../sections/afhentninger/afhentninger";
@@ -14,7 +14,8 @@ import LoginPage from "../sections/auth/loginPage"
 
 const AppLayout = (props) => {
 
-    const [value, setValue] = useState(6)
+    const [value, setValue] = useState(6);
+
     
 
     
@@ -38,10 +39,13 @@ const AppLayout = (props) => {
           }
     }
 
+
+    useEffect(() => {
+
+    })
+
     return (
         <>
-            
-            
                 <div className="content-container">
                    {renderView()}
                 </div>
