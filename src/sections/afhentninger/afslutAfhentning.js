@@ -63,7 +63,7 @@ const AfslutModal = (props) => {
     const [currentUser, setCurrentUser] = useState(localStorage.getItem('userID'));
     const [userData, setUserData] = useState('')
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
-        afhentningsadresse: '',
+        afhentningsadresse: userData.afhentningsadresse,
         by: '',
         postnummer: '',
         aktiv: "oprettet",
@@ -93,15 +93,17 @@ const AfslutModal = (props) => {
         setUserData(user);
     }
 
-    useEffect(() => {
-        setAfhentningsInformation({userID: userData.userID})
-    }, [userData])
+    
 
     useEffect(() => {
         getUser();
         setAfhentningsInformation({tidsrumFra: afhentesFra})
         setAfhentningsInformation({tidsrumTil: afhentesTil})
     }, [afhentesFra, afhentesTil])
+
+    useEffect(() => {
+        setAfhentningsInformation(userData)
+    }, [userData])
 
     return (
         
@@ -122,35 +124,35 @@ const AfslutModal = (props) => {
                             className={classes.textField}
                             id="standard-basic" 
                             label="Leverandørnavn" 
-                            value={userData.virksomhedsNavn}
+                            value={afhentningsInformation.virksomhedsNavn}
                             onChange={(e) => setAfhentningsInformation({leverandør: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Afhentningsadresse" 
-                            value={userData.afhentningsadresse}
+                            value={afhentningsInformation.afhentningsadresse}
                             onChange={(e) => setAfhentningsInformation({afhentningsadresse: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="By" 
-                            value={userData.by}
+                            value={afhentningsInformation.by}
                             onChange={(e) => setAfhentningsInformation({by: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Postnummer" 
-                            value={userData.postnummer}
+                            value={afhentningsInformation.postnummer}
                             onChange={(e) => setAfhentningsInformation({postnummer: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}
                             id="standard-basic" 
                             label="Kontaktperson" 
-                            value={userData.kontaktPerson}
+                            value={afhentningsInformation.kontaktPerson}
                             onChange={(e) => setAfhentningsInformation({kontaktPerson: e.target.value})}>
                         </TextField>
                         <DateTimePicker

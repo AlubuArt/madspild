@@ -42,7 +42,7 @@ const HomeScreen = ({value, onChange}) => {
     const [userName, setUserName] = useState('')
 
     const opretAfhentning = async () => {
-        const currentAfhentning = await addAfhentningToDataBase();
+        const currentAfhentning = await addAfhentningToDataBase(currentUser);
         localStorage.setItem('currentAfhentning', currentAfhentning); 
         onChange(3);
     }

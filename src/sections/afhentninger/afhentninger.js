@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {getAfhentningerFromDatabase, getUsersAfhentninger} from '../../service/firebase.service'
+import {getUsersAfhentninger} from '../../service/firebase.service'
 import AfhentningCard from './afhentningCard'
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
@@ -50,7 +50,7 @@ const Afhentninger = ({value, onChange}) => {
     
 
     const getAfhentninger = async () => {
-        //const afhentninger = await getAfhentningerFromDatabase()
+        
         const afhentninger = await getUsersAfhentninger(currentUser)
         setAfhentninger(afhentninger)
     }

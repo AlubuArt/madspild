@@ -3,7 +3,7 @@ import {dbRef, db} from '../service/firebase.config';
 const collRef = db.collection('overskudsmad');
 const collUser = db.collection('users')
 
-export const addAfhentningToDataBase = async () => {
+export const addAfhentningToDataBase = async (userID) => {
     const docRef = await collRef.add({});
     docRef.set({
         afhentningsadresse: ' ',
@@ -17,11 +17,10 @@ export const addAfhentningToDataBase = async () => {
         betingelser: 'standard betingelser gælder',
         booketStatus: false,
         kontaktPerson: '',
-        leverandør: '',
         tidsrumFra: '',
         tidsrumTil: '',
         id: docRef.id,
-        userID: ''
+        userID: userID
         
     })
     return docRef.id;

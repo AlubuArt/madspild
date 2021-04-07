@@ -117,7 +117,7 @@ const RedigerModal = (props) => {
                             className={classes.textField}
                             id="standard-basic" 
                             label="Leverandørnavn" 
-                            defaultValue={afhentningsInformation.leverandør} 
+                            defaultValue={afhentningsInformation.virksomhedsNavn} 
                             onChange={(e) => setAfhentningsInformation({leverandør: e.target.value})}>
                         </TextField>
                         <TextField 
