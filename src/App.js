@@ -7,15 +7,18 @@ import DateFnsUtils from '@date-io/date-fns';
 import LoginPage from './sections/auth/loginPage';
 import SignupPage from './sections/auth/signupPage'
 import { BrowserRouter,  Switch, Route,Redirect} from 'react-router-dom';
+import {firebase_app} from '../src/service/firebase.config';
 
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(localStorage.getItem('userID'))
-  const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"))
+  const [currentUser, setCurrentUser] = useState(false)
+  const [authenticated, setAuthenticated] = useState(false)
   const [value, setValue] = useState(0);
 
-  
+  useEffect(() => {
+    firebase_app.auth().onAuthStateChanged(setCurrentUser);
+  }, [])
 
   return (
 
@@ -27,9 +30,11 @@ function App() {
             <Route path={`${process.env.PUBLIC_URL}/login`} component={LoginPage} />
             <Route path={`${process.env.PUBLIC_URL}/opret-bruger`} component={SignupPage} />
 
-            {currentUser !== null || authenticated ?
-              <Route path={`${process.env.PUBLIC_URL}/velkommen`} component={AppLayout} />
+            {currentUser !== null ?
 
+            <>
+              <Route path={`${process.env.PUBLIC_URL}/velkommen`} component={AppLayout} />
+              </>
               :
 
               <Redirect to={`${process.env.PUBLIC_URL}/login`}/>
