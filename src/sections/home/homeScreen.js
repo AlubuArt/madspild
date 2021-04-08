@@ -62,14 +62,14 @@ const HomeScreen = ({value, onChange}) => {
                     className={cardHeaderShadowStyles.root}
                     classes={cardHeaderStyles}
                     title={'Velkommen'}
-                    subheader={'Har i noget overskudsmad der kan afhentes? Så start med at oprette en ny afhentning, så potentielle aftagere kan se og booke din afhentning.'}
+                    subheader={'Har i noget overskudsmad der kan afhentes? Så start med at oprette en ny donation, så potentielle aftagere kan se og booke din donation til afhentning. Når din donation er oprettet kan du se den under "Donationer"'}
                     />
                 <div className="home-main-container">
                     <div className="add-container">
                         <Fab onClick={opretAfhentning} aria-label="add">
                             <AddIcon />
                         </Fab>
-                        <h3 className="add-container-h3">NY AFHENTNING</h3>
+                        <h3 className="add-container-h3">NY DONATION</h3>
                     </div>
                 </div>
             </Container>

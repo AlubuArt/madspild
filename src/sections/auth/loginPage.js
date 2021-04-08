@@ -65,7 +65,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     }
 
     const handleOpretProfil = () => {
-        
+        history.push(`${process.env.PUBLIC_URL}/opret-bruger`)
     }
 
       return (

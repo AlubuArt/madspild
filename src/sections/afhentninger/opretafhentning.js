@@ -50,7 +50,6 @@ const OpretAfhentning = ({value, onChange}) => {
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
-    const [selectedVare, setSelectedVare] = useState('')
     const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });

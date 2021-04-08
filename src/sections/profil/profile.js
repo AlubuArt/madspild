@@ -75,7 +75,7 @@ const Profile = ({value, onChange}) => {
 
     const updateUserData = async () => {
         try{
-            const dataToUpdate = userData;
+            
             await updateUserDataInDatabase(userData, loggedInUser);
             alert("Oplysninger blev opdateret")
             getData();
@@ -105,8 +105,8 @@ const Profile = ({value, onChange}) => {
             <CardHeader
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
-                title={'Velkommen'}
-                subheader={'Har du noget overskudsmad der kan afhentes? Så start med at oprette en ny afhentning, så potentielle aftagere kan se og booke din afhentning.'}
+                title={'Virksomhedsprofil'}
+                subheader={'Udfyld oplysninger om virksomheden.'}
             />
             <Card className={cx(classes.card, cardShadowStyles.root)}>
                 <CardActionArea>

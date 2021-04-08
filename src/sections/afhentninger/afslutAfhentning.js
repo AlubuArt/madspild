@@ -19,8 +19,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { format, compareAsc } from 'date-fns'
-import toDate from 'date-fns/toDate'
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
@@ -60,7 +58,7 @@ const AfslutModal = (props) => {
     const [dialogOpen, setDialogOpen] = useState(false)
     const [afhentesFra, setAfhentesFra] = useState(new Date());
     const [afhentesTil, setAfhentesTil] = useState(new Date());
-    const [currentUser, setCurrentUser] = useState(localStorage.getItem('userID'));
+    const [currentUser] = useState(localStorage.getItem('userID'));
     const [userData, setUserData] = useState('')
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
         afhentningsadresse: userData.afhentningsadresse,
@@ -99,6 +97,7 @@ const AfslutModal = (props) => {
         getUser();
         setAfhentningsInformation({tidsrumFra: afhentesFra})
         setAfhentningsInformation({tidsrumTil: afhentesTil})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [afhentesFra, afhentesTil])
 
     useEffect(() => {
