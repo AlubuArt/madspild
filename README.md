@@ -9,9 +9,13 @@ This side of the platform handles the supplier side and i made with Create-react
 
 ## Features
 Login and signup with Firebase Auth
+
 Registre donation
+
 See donations 
+
 See bookings
+
 View and edit profile
 
 ## Development process
