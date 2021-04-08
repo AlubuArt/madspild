@@ -1,4 +1,4 @@
-import { useReducer, useState} from 'react';
+import { useReducer} from 'react';
 import { CardActionArea, Modal } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
@@ -57,20 +57,12 @@ const ModalBody = (props) => {
         mængde: '',
        
     })
-    const [enhed, setEnhed] = useState([])
 
     const tilføjVaren = () => {
         addVarerToAfhentning(vareInformationer, props.currentAfhentning);
         props.onClose()
         
     }
-
-
-    const enheder = [
-        'Kg',
-        'Palle'
-    ]
-   
 
     return (
 

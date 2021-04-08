@@ -39,7 +39,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 
 
-const SignupPage = ({value, onChange}) => {
+const SignupPage = ({ history }) => {
 
     
     const [pass, setPass] = useState();
@@ -75,7 +75,7 @@ const SignupPage = ({value, onChange}) => {
     const redirectToHomePageAfterSuccess = async () => {
         try{
             await firebase_app.auth().signInWithEmailAndPassword(profileData.kontaktEmail, pass);
-            onChange(2)
+            history.push(`${process.env.PUBLIC_URL}/profil`)
 
         } catch (error) {
             console.log(error)
