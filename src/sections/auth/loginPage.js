@@ -16,6 +16,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import AppLayout from '../../components/app'
+import { withRouter } from 'react-router';
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   }));
 
 
-  const LoginPage = ({value, onChange}) => {
+  const LoginPage = ({ history }) => {
 
     
     const classes = useStyles();
@@ -53,7 +55,8 @@ const useStyles = makeStyles(({ spacing }) => ({
         try {
 
             await loginUser(email, pass);
-            onChange(0)
+            history.push(`${process.env.PUBLIC_URL}/velkommen`)
+          
 
         } catch (error) {
             console.log (error);
@@ -62,7 +65,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     }
 
     const handleOpretProfil = () => {
-        onChange(5);
+        
     }
 
       return (
@@ -105,4 +108,4 @@ const useStyles = makeStyles(({ spacing }) => ({
   }
 
 
-export default LoginPage;
+export default withRouter(LoginPage) 

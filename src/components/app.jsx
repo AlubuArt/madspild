@@ -14,7 +14,7 @@ import LoginPage from "../sections/auth/loginPage"
 
 const AppLayout = (props) => {
 
-    const [value, setValue] = useState(6);
+    const [value, setValue] = useState(0);
     const [currentUser, setCurrentUser] = useState(null)
     const [authenticated, setAuthenticated] = useState(false)
 
