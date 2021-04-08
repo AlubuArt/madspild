@@ -47,15 +47,12 @@ const HomeScreen = ({value, onChange}) => {
         onChange(3);
     }
 
-  const getUserName = async () => {
-    const userName = await getUserData(currentUser);
-    setUserName(userName.virksomhedsNavn)
-  }
+  
 
   useEffect(() => {
 
 
-    getUserName()
+   
   }, [])    
    
     return (
