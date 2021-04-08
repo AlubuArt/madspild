@@ -1,4 +1,4 @@
-import { Card, CardContent, CardActionArea, Typography, Button, CardActions } from "@material-ui/core";
+import { Card, CardContent, CardActionArea, Typography, Button, CardActions, Grid } from "@material-ui/core";
 import { sletAfhentningFraDatabase } from "../../service/firebase.service";
 import RedigerAfhentningModal from './redigerAfhentning'
 import {useState, useEffect} from 'react'
@@ -17,6 +17,7 @@ const useStyles = makeStyles(({ spacing }) => ({
       width: '95%',
      // overflow: 'initial',
       background: '#ffffff',
+      
     },
     content: {
       paddingTop: 20,
@@ -26,6 +27,9 @@ const useStyles = makeStyles(({ spacing }) => ({
         marginBottom: 0,
       }
     },
+    item: {
+        textAlign: 'center'
+    }
   }));
 
 const AfhentningCard = (props) => {
@@ -61,24 +65,66 @@ const AfhentningCard = (props) => {
         <Card className={cx(classes.card, cardShadowStyles.root)}>
             <CardActionArea>
                 <CardContent className={classes.content}>
-                    <Typography gutterBottom variant="body1">
-                        Afhentes fra: {parseDates(props.data.tidsrumFra.seconds)}
-                    </Typography>
-                    <Typography gutterBottom variant="body1">
-                        Afhentes til: {parseDates(props.data.tidsrumTil.seconds)}
-                    </Typography>
-                    <Typography gutterBottom variant="body1">
-                        Status: {props.data.aktiv}
-                    </Typography>
-                    <Typography gutterBottom variant="body1">
-                        Booket af: {props.data.booketStatus} 
-                    </Typography>
-                    <Typography gutterBottom variant="body1">
-                        Betingelser: {props.data.betingelser}
-                    </Typography>
-                    <Typography gutterBottom variant="body1">
-                        Kontaktperson: {props.data.kontaktPerson}
-                    </Typography>
+                    <Grid container>
+                        <Grid item xs={4}>
+                            <Typography gutterBottom variant="subtitle2">
+                                Afhentes fra:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Typography gutterBottom paragraph variant="p">
+                                {parseDates(props.data.tidsrumFra.seconds)}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={4}>
+                            <Typography gutterBottom variant="subtitle2">
+                                Afhentes til:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Typography gutterBottom paragraph variant="p">
+                                {parseDates(props.data.tidsrumTil.seconds)}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={4}>
+                            <Typography gutterBottom variant="subtitle2">
+                                Status:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography gutterBottom paragraph variant="p">
+                            {props.data.aktiv}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={4}>
+                            <Typography variant="subtitle2" paragraph gutterBottom={true}>
+                                Booket af:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Typography variant="p" gutterBottom={true}>
+                            {props.data.booketStatus}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={4}>
+                            <Typography gutterBottom variant="subtitle2">
+                                Noter til afhentningen:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Typography gutterBottom variant="p">
+                            {props.data.betingelser}
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </CardContent>
             </CardActionArea>
             <CardActions>

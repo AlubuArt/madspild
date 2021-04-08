@@ -1,11 +1,14 @@
 import {dbRef, db} from '../service/firebase.config';
 
 const collRef = db.collection('overskudsmad');
+const collUser = db.collection('users')
 
-export const addAfhentningToDataBase = async () => {
+export const addAfhentningToDataBase = async (userID) => {
     const docRef = await collRef.add({});
     docRef.set({
-        afhentningssted: ' ',
+        afhentningsadresse: ' ',
+        by: '',
+        postnummer: '',
         aftale: {
             aftager: '',
             kontrakr: ''
@@ -14,10 +17,11 @@ export const addAfhentningToDataBase = async () => {
         betingelser: 'standard betingelser gælder',
         booketStatus: false,
         kontaktPerson: '',
-        leverandør: '',
         tidsrumFra: '',
         tidsrumTil: '',
-        id: docRef.id
+        id: docRef.id,
+        userID: userID
+        
     })
     return docRef.id;
 }
@@ -80,6 +84,19 @@ export const getAfhentningerFromDatabase = async () => {
     return result;
 }
 
+export const getUsersAfhentninger = async (userID) => {
+    const result = []
+    await collRef.where('userID', "==", userID).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            result.push(doc.data());
+        })
+    })
+    return result;
+
+
+}
+
 export const sletAfhentningFraDatabase = (docID) => {
     collRef.doc(docID).delete();
     db.collection('overskudsmad/' + docID + '/varer').get().then((querySnapshot) => {
@@ -91,5 +108,35 @@ export const sletAfhentningFraDatabase = (docID) => {
     
     })
     return
+}
+
+
+export const updateUserDataInDatabase = (userData, userID) => {
+    var ref = collUser.doc(userID);
+    ref.set({
+        virksomhedsCVR: userData.virksomhedsCVR,
+        afhentningsadresse: userData.afhentningsadresse,
+        by: userData.by,
+        postnummer: userData.postnummer,
+        tidsrum: userData.tidsrum,
+        kontaktPerson: userData.kontaktPerson,
+        note: userData.note,
+        kontaktEmail: userData.kontaktEmail,
+        virksomhedsNavn: userData.virksomhedsNavn, 
+    }, {merge: true})
+
+}
+
+export const getUserData = async (userID) => {
+
+    if (userID !== null) {
+       var data; 
+    var ref = collUser.doc(userID);
+    await ref.get().then((doc) => {
+        data = doc.data();
+    })
+    return data; 
+    }
+    
 }
 
