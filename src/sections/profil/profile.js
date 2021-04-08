@@ -4,6 +4,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {Container} from '@material-ui/core';
 import {addAfhentningToDataBase, updateUserDataInDatabase, getUserData} from '../../service/firebase.service'
+import {logoutUser} from '../../service/login.service'
 import CardHeader from '@material-ui/core/CardHeader';
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
@@ -65,6 +66,11 @@ const Profile = ({value, onChange}) => {
 
     const handleSave = () => {
         updateUserData()
+    }
+
+    const handleLogud = () => {
+        logoutUser()
+        onChange(6)
     }
 
     const updateUserData = async () => {
@@ -170,8 +176,11 @@ const Profile = ({value, onChange}) => {
                             onChange={(e) => setUserData({note: e.target.value})}
                         />
                         <div>
-                            <Button style={{marginTop: '20px'}} variant="contained" onClick={handleSave}>Gem</Button>
+                            <Button style={{marginTop: '20px', marginRight: "20px"}} variant="contained" onClick={handleSave}>Gem</Button>
+                            <Button style={{marginTop: '20px' }} variant="contained" onClick={handleLogud}>Log ud</Button>
+                            
                             </div>
+                            
                     </CardContent>
                 </CardActionArea>
 

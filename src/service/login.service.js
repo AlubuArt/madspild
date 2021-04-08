@@ -34,3 +34,9 @@ export const loginUser = async (email, pass) => {
     
     
 }
+
+export const logoutUser = async () => {
+    localStorage.removeItem('userID')
+    localStorage.removeItem('authenticated');
+    firebase_app.auth().signOut()
+}

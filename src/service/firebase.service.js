@@ -128,11 +128,15 @@ export const updateUserDataInDatabase = (userData, userID) => {
 }
 
 export const getUserData = async (userID) => {
-    var data; 
+
+    if (userID !== null) {
+       var data; 
     var ref = collUser.doc(userID);
     await ref.get().then((doc) => {
         data = doc.data();
     })
-    return data;
+    return data; 
+    }
+    
 }
 
