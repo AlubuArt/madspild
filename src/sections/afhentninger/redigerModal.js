@@ -18,9 +18,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {setAfhentningToActive} from '../../service/firebase.service'
-import toDate from 'date-fns/toDate'
-import fromUnixTime from 'date-fns/fromUnixTime'
+import {setAfhentningToActive} from '../../service/firebase.service';
+import fromUnixTime from 'date-fns/fromUnixTime';
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
@@ -91,7 +90,7 @@ const RedigerModal = (props) => {
     useEffect(() => {
         setAfhentningsInformation(props.data) 
         console.log(fromUnixTime(props.data.tidsrumTil.seconds))
-    },[])
+    },[props.data])
 
     useEffect(() => {
         setAfhentningsInformation({tidsrumFra: afhentesFra})

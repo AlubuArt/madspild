@@ -6,7 +6,6 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import LoginPage from './sections/auth/loginPage';
 import SignupPage from './sections/auth/signupPage';
-import Profile from './sections/profil/profile';
 import { BrowserRouter,  Switch, Route,Redirect} from 'react-router-dom';
 import {firebase_app} from '../src/service/firebase.config';
 
@@ -14,8 +13,7 @@ import {firebase_app} from '../src/service/firebase.config';
 function App() {
 
   const [currentUser, setCurrentUser] = useState(false)
-  const [authenticated, setAuthenticated] = useState(false)
-  const [value, setValue] = useState(0);
+  
 
   useEffect(() => {
     firebase_app.auth().onAuthStateChanged(setCurrentUser);

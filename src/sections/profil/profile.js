@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useReducer, useEffect} from 'react';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import {Container} from '@material-ui/core';
-import {addAfhentningToDataBase, updateUserDataInDatabase, getUserData} from '../../service/firebase.service'
+import {updateUserDataInDatabase, getUserData} from '../../service/firebase.service'
 import {logoutUser} from '../../service/login.service'
 import CardHeader from '@material-ui/core/CardHeader';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,15 +10,10 @@ import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import Card from '@material-ui/core/Card';
 import cx from 'clsx';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-
 
 
 const useStyles = makeStyles(({ spacing }) => ({

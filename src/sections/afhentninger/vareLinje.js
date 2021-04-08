@@ -2,8 +2,6 @@ import Card from '@material-ui/core/Card';
 import { Grid} from '@material-ui/core';
 import './opretafhentning.css'
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
-import EditIcon from '@material-ui/icons/Edit';
-
 import { withStyles } from '@material-ui/core/styles';
 
 const StyledCard = withStyles({

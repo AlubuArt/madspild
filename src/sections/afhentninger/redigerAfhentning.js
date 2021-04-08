@@ -1,16 +1,12 @@
-import {useEffect, useState, useReducer} from 'react';
+import {useState} from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { CardActionArea, Grid, Modal } from '@material-ui/core';
-import './opretafhentning.css'
-import VareLinje from './vareLinje';
+import { CardActionArea} from '@material-ui/core';
+import './opretafhentning.css';
 import React from 'react';
-import ModalBody from './modalBody'
 import RedigerModal from './redigerModal';
-import ls, {get,set} from "local-storage";
 import { deleteVarerFromAfhentning, getvarerFromDB, getAfhentningFromDatabase} from '../../service/firebase.service'
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
@@ -24,6 +20,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import ModalBody from './modalBody'
+
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -50,7 +48,7 @@ const RedigerAfhentning = ({value, onChange}) => {
     const [modal, setModal] = useState(false)
     const [afslutModal, setAfslutModal] = useState(false)
     const [varer, setVarer] = useState([])
-    const [currentAfhentning, setCurrentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
+    const [currentAfhentning] = useState(localStorage.getItem('currentAfhentning'));
     const [afhentningData, setAfhentningData] = useState('1')
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
@@ -68,6 +66,7 @@ const RedigerAfhentning = ({value, onChange}) => {
         getVarer();
         setModal(false);
     }
+
 
     const handleAfslutModalClose = () => {
         setAfslutModal(false)
@@ -99,16 +98,15 @@ const RedigerAfhentning = ({value, onChange}) => {
 
     useState(() => {
         getVarer();
-    })
+    },[])
 
     return (
         <div>
-            {/* <ModalBody
+            <ModalBody
                 open={modal}
                 onClose={handleModalClose}
                 currentAfhentning={currentAfhentning}
-            /> */}
-            
+            />
             {returnModal()}
 
             <Card className={cx(classes.card, cardShadowStyles.root)}>

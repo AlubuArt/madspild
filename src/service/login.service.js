@@ -6,7 +6,6 @@ const coll = db.collection('users/')
 
 export const signupUserInDatabase = async (data, pass) => {
 
-
     const userObj = await firebase_app.auth().createUserWithEmailAndPassword(data.kontaktEmail, pass);
     const user = userObj.user;
     const userID = user.uid;
@@ -15,13 +14,10 @@ export const signupUserInDatabase = async (data, pass) => {
         virksomhedsNavn: data.virksomhedsNavn,
         virksomhedsCVR: data.virksomhedsCVR, 
         kontaktEmail: data.kontaktEmail
-
     })
 
     localStorage.setItem('userID', userID);
     localStorage.setItem("authenticated", true)
-    
-
 }
 
 
@@ -31,8 +27,6 @@ export const loginUser = async (email, pass) => {
     const uid = loggedInUser.user.uid;
     localStorage.setItem('userID', uid);
     localStorage.setItem("authenticated", true)
-    
-    
 }
 
 export const logoutUser = async () => {

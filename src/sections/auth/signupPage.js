@@ -9,12 +9,9 @@ import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import Card from '@material-ui/core/Card';
 import cx from 'clsx';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -41,7 +38,6 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 const SignupPage = ({ history }) => {
 
-    
     const [pass, setPass] = useState();
     const classes = useStyles();
     const cardHeaderStyles = useContainedCardHeaderStyles();
@@ -68,8 +64,6 @@ const SignupPage = ({ history }) => {
         } catch (error) {
             console.log(error)
         }
-        
-        
     }
 
     const redirectToHomePageAfterSuccess = async () => {
@@ -121,8 +115,6 @@ const SignupPage = ({ history }) => {
                     <Button style={{margin: '10px'}} variant="contained" onClick={handleSignupClick}>Opret bruger</Button>
                 </CardActionArea>
             </Card>
-            
-
         </Container>
 
     )

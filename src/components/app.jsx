@@ -1,27 +1,17 @@
 /* eslint-disable default-case */
-import React, { Fragment, useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import BotNavigation from "../routing/bottomNavigation"
 import HomeScreen from "../sections/home/homeScreen";
 import Afhentninger from "../sections/afhentninger/afhentninger";
 import Profile from "../sections/profil/profile";
 import OpretAfhentning from "../sections/afhentninger/opretafhentning";
 import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning";
-import SignupPage from "../sections/auth/signupPage"
-import LoginPage from "../sections/auth/loginPage"
-
-
 
 
 const AppLayout = (props) => {
 
     const [value, setValue] = useState();
-    const [currentUser, setCurrentUser] = useState(null)
-    const [authenticated, setAuthenticated] = useState(false)
-
     
-
-    
-    //would love to change this routing to react-router
     const renderView = () => {
         switch(value) {
             case 0:
@@ -42,17 +32,15 @@ const AppLayout = (props) => {
     useEffect(() => {
 
       setValue(props.value)
-      
-
     },[] )
 
     return (
         <>
-                <div className="content-container">
-                   {renderView()}
-                </div>
-                <BotNavigation value={value} onChange={setValue} />
-          </>  
+          <div className="content-container">
+            {renderView()}
+          </div>
+          <BotNavigation value={value} onChange={setValue} />
+        </>  
         
     )
     
