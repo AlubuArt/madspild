@@ -1,4 +1,4 @@
-import {dbRef, db} from '../service/firebase.config';
+import {db} from '../service/firebase.config';
 
 const collRef = db.collection('overskudsmad');
 const collUser = db.collection('users')
@@ -65,7 +65,7 @@ export const getSelectedVareFromDatabase = async (currentAfhentning, docID) => {
 }
 
 export const setAfhentningToActive = (currentAfhentning, data) => {
-    const ref = collRef.doc(currentAfhentning).update(data)
+    collRef.doc(currentAfhentning).update(data)
 }
 
 export const getAfhentningFromDatabase = async (currentAfhentning) => {
