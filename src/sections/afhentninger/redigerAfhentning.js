@@ -20,6 +20,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import ModalBody from './modalBody'
+
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -60,6 +62,11 @@ const RedigerAfhentning = ({value, onChange}) => {
         getVarer();
     }
 
+    const handleModalClose = () => {
+        getVarer();
+        setModal(false);
+    }
+
 
     const handleAfslutModalClose = () => {
         setAfslutModal(false)
@@ -91,11 +98,15 @@ const RedigerAfhentning = ({value, onChange}) => {
 
     useState(() => {
         getVarer();
-    })
+    },[])
 
     return (
         <div>
-            
+            <ModalBody
+                open={modal}
+                onClose={handleModalClose}
+                currentAfhentning={currentAfhentning}
+            />
             {returnModal()}
 
             <Card className={cx(classes.card, cardShadowStyles.root)}>
