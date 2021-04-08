@@ -1,4 +1,4 @@
-# Foodwaste application
+# Foodwaste web application
 
 This application was made as a project for my masters thesis in IT-design and Application development.
 The application facilitate interactions between food sppliers and social economic organisations, that allows the exchange of surplus foods, so the food dont go to waste.
@@ -21,8 +21,13 @@ View and edit profile
 ## Development process
 We made this application using a Scrum methodology. We had an initial design sprint, (sprint 0) and two development sprints. By the two sprints we had a working MVP that we tested in a real setting with real users. This lay the ground for our next sprint.
 
+## Application design
+The code is structured with a sections folder, containing the different Views, a service folder containing backend calls to firebase to seperate concerns. 
+React hooks manage application state and React Router handles routing.
+LocalStorage is used to persist userID between browser reloads. 
 
-## Design 
+
+## UI Design 
 The application layout was made in Figma, and programmed using Materiale Design Kit for react, for faster developement and reconisble design features. 
 
 ![Skærmbillede 2021-04-08 kl  19 42 09](https://user-images.githubusercontent.com/57637214/114072464-98c36c00-98a2-11eb-9bd5-7bb4a81774e3.png)
