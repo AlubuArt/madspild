@@ -97,12 +97,13 @@ const Profile = ({value, onChange}) => {
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
                 title={'Virksomhedsprofil'}
-                subheader={'Udfyld oplysninger om virksomheden.'}
+                subheader={'Udfyld oplysninger om virksomheden, så er de autoudfyldt når du oprette en ny donation, men kan stadig rettes i under oprettelse. '}
             />
             <Card className={cx(classes.card, cardShadowStyles.root)}>
                 <CardActionArea>
                     <CardContent>
                         <TextField
+                            
                             className="form-control"
                             type="number"
                             label="Cvrnr"
