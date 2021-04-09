@@ -54,7 +54,6 @@ const Profile = ({value, onChange}) => {
         note: '',
         kontaktEmail: '',
         virksomhedsNavn: '',
-
     })
 
     const handleSave = () => {
@@ -90,7 +89,6 @@ const Profile = ({value, onChange}) => {
 
     useEffect(() => {
        getData()
-    
     }, [])
 
     return (
@@ -132,7 +130,6 @@ const Profile = ({value, onChange}) => {
                             value={userData.kontaktPerson}
                             onChange={(e) => setUserData({kontaktPerson: e.target.value})}
                         />
-                        
                         <TextField
                             className="form-control"
                             type="text"
@@ -154,13 +151,13 @@ const Profile = ({value, onChange}) => {
                             value={userData.postnummer}
                             onChange={(e) => setUserData({postnummer: e.target.value})}
                         />
-                        <TextField
+                        {/* <TextField
                             className="form-control"
                             type="text"
                             label="tidsrum"
                             value={userData.tidsrum}
                             onChange={(e) => setUserData({tidsrum: e.target.value})}
-                        />
+                        /> */}
                         <TextField
                             className="form-control"
                             type="text"
@@ -172,13 +169,10 @@ const Profile = ({value, onChange}) => {
                             <Button style={{marginTop: '20px', marginRight: "20px"}} variant="contained" onClick={handleSave}>Gem</Button>
                             <Button style={{marginTop: '20px' }} variant="contained" onClick={handleLogud}>Log ud</Button>
                             
-                            </div>
-                            
+                        </div>
                     </CardContent>
                 </CardActionArea>
-
             </Card>
-
         </Container>
     )
 
