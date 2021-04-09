@@ -26,28 +26,26 @@ function App() {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <BrowserRouter basename="/">
           <Switch>
-            <Route 
-              exact path="/"
-              render={() => {
-                return (
-                  currentUser !== null ? 
-                  <>
-                  <Redirect to={`${process.env.PUBLIC_URL}/velkommen`} render={() => <AppLayout value={0} />} />
-                  
-                  </>
-                  :
-                  <Redirect to={`${process.env.PUBLIC_URL}/login`}/>
 
-                )
-              }}
-
-            />
             <Route path={`${process.env.PUBLIC_URL}/login`} component={LoginPage} />
-            <Route path={`${process.env.PUBLIC_URL}/opret-bruger`} component={SignupPage} />  
-            <Route path={`${process.env.PUBLIC_URL}/velkommen`} render={() => <AppLayout value={0} />} />
-            <Route path={`${process.env.PUBLIC_URL}/profil`} render={() => <AppLayout value={2} />} />
-            
-            
+            <Route path={`${process.env.PUBLIC_URL}/opret-bruger`} component={SignupPage} />
+
+            { currentUser !== null ?
+
+              <>
+              <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
+                return (<Redirect to={`${process.env.PUBLIC_URL}/velkommen`}/>) 
+              }} />
+
+              <Route path={`${process.env.PUBLIC_URL}/velkommen`} render={() => <AppLayout value={0} />} />
+              <Route path={`${process.env.PUBLIC_URL}/profil`} render={() => <AppLayout value={2} />} />
+              </>
+              :
+
+              <Redirect to={`${process.env.PUBLIC_URL}/login`}/>
+ 
+            }
+
           </Switch>
         </BrowserRouter>
       </MuiPickersUtilsProvider>

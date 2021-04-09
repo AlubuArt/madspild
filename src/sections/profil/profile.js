@@ -14,6 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import { withRouter } from 'react-router';
 
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -37,7 +38,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   }));
 
 
-const Profile = ({value, onChange}) => {
+const Profile = ({ history  }) => {
 
     const classes = useStyles();
     const cardHeaderStyles = useContainedCardHeaderStyles();
@@ -62,7 +63,8 @@ const Profile = ({value, onChange}) => {
 
     const handleLogud = () => {
         logoutUser()
-        onChange(6)
+        history.push(`${process.env.PUBLIC_URL}/login`)
+       
     }
 
     const updateUserData = async () => {
@@ -179,4 +181,4 @@ const Profile = ({value, onChange}) => {
 
 }
 
-export default Profile;
+export default withRouter(Profile);
