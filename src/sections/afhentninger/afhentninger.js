@@ -44,15 +44,19 @@ const Afhentninger = ({onChange}) => {
                     />
             
             
-            {
+            { 
                 afhentninger.map((afhentning, i) => {
-                    return <AfhentningCard 
+
+                    
+                        return <AfhentningCard 
                             data={afhentning}
                             key={i}
                             update={getAfhentninger}
                             rediger={rediger}
                             currentAfhentning={setCurrentAfhentning}
-                        />   
+                        />
+                    
+                       
                     
                     
                 })

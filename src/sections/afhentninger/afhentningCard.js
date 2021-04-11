@@ -124,7 +124,17 @@ const AfhentningCard = (props) => {
             </CardActionArea>
             <CardActions>
                 <Button variant="contained" onClick={(e) => sletAfhentning()}>Slet</Button>
-                <Button variant="contained"onClick={(e) => redigerAfhentning()}>Redigér</Button> 
+
+                { props.data.booketStatus === "ikke booket" ?
+
+                    <Button variant="contained"onClick={(e) => redigerAfhentning()}>Redigér</Button> 
+
+                    : 
+
+                    <></>
+            
+            }
+                
             </CardActions>
             
         </Card>

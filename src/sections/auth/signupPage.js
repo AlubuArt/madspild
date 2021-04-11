@@ -69,7 +69,7 @@ const SignupPage = ({ history }) => {
     const redirectToHomePageAfterSuccess = async () => {
         try{
             await firebase_app.auth().signInWithEmailAndPassword(profileData.kontaktEmail, pass);
-            history.push(`${process.env.PUBLIC_URL}/profil`)
+            history.push(`${process.env.PUBLIC_URL}/velkommen`)
 
         } catch (error) {
             console.log(error)
