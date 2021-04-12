@@ -7,11 +7,11 @@ import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
 import './opretafhentning.css'
 import React from 'react';
-import ModalBody from './modalBody'
+import ModalBody from '../components/modalBody'
 import CardHeader from '@material-ui/core/CardHeader';
-import AfslutModal from './afslutAfhentning';
+import AfslutModal from '../components/afslutModal';
 import { makeStyles } from '@material-ui/core/styles';
-import { deleteVarerFromAfhentning, getvarerFromDB} from '../../service/firebase.service'
+import { deleteVarerFromAfhentning, getvarerFromDB} from '../../../service/firebase.service'
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';

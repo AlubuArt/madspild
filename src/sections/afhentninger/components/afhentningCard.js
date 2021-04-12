@@ -1,5 +1,5 @@
 import { Card, CardContent, CardActionArea, Typography, Button, CardActions, Grid } from "@material-ui/core";
-import { sletAfhentningFraDatabase } from "../../service/firebase.service";
+import { sletAfhentningFraDatabase } from "../../../service/firebase.service";
 import {useState} from 'react'
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';

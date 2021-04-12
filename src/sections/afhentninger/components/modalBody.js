@@ -1,8 +1,8 @@
 import { useReducer} from 'react';
 import { CardActionArea, Modal } from '@material-ui/core';
-import './opretafhentning.css'
+import '../opretAfhentning/opretafhentning.css'
 import React from 'react';
-import {addVarerToAfhentning} from '../../service/firebase.service'
+import {addVarerToAfhentning} from '../../../service/firebase.service'
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';

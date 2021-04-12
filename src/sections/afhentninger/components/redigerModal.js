@@ -1,8 +1,6 @@
-import { useReducer, useEffect} from 'react';
+import React, {useState, useReducer, useEffect} from 'react';
 import { CardActionArea, Modal, TextField } from '@material-ui/core';
-import './opretafhentning.css'
-import React from 'react';
-import { useState } from "react";
+import '../opretAfhentning/opretafhentning.css'
 import { DateTimePicker} from "@material-ui/pickers";
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
@@ -18,7 +16,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {setAfhentningToActive} from '../../service/firebase.service';
+import {setAfhentningToActive} from '../../../service/firebase.service';
 import fromUnixTime from 'date-fns/fromUnixTime';
 
     const useStyles = makeStyles(({ spacing }) => ({

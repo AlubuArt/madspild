@@ -5,7 +5,6 @@ import './home.css'
 import {Container} from '@material-ui/core';
 import {addAfhentningToDataBase} from '../../service/firebase.service'
 import CardHeader from '@material-ui/core/CardHeader';
-import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 

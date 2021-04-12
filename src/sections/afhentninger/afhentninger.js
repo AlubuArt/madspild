@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {getUsersAfhentninger} from '../../service/firebase.service'
-import AfhentningCard from './afhentningCard'
+import AfhentningCard from './components/afhentningCard'
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useFadedShadowStyles } from '@mui-treasury/styles/shadow/faded';
 import CardHeader from '@material-ui/core/CardHeader';
