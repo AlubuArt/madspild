@@ -1,11 +1,11 @@
 /* eslint-disable default-case */
 import React, { useState, useEffect } from "react"
-import BotNavigation from "../routing/bottomNavigation"
+import BotNavigation from "../navigation/bottomNavigation"
 import HomeScreen from "../sections/home/homeScreen";
 import Afhentninger from "../sections/afhentninger/afhentninger";
 import Profile from "../sections/profil/profile";
-import OpretAfhentning from "../sections/afhentninger/opretafhentning";
-import RedigerAfhentning from "../sections/afhentninger/redigerAfhentning";
+import OpretAfhentning from "../sections/afhentninger/opretAfhentning/opretafhentning";
+import RedigerAfhentning from "../sections/afhentninger/redigerAfhentninger/redigerAfhentning";
 
 
 const AppLayout = (props) => {

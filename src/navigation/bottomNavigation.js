@@ -42,9 +42,9 @@ const BotNavigation = ( {value, onChange}) => {
 
     return (
         <BottomNavigation classes={{root: classes.root}} value={value} onChange={(e, tab) => onChange(tab)} showLabels={true}>
-            <BottomNavigationAction classes={{root: classes.item, selected: classes.selected}} label="Hjem" icon={<Home />} ></BottomNavigationAction>
-            <BottomNavigationAction classes={{root: classes.item, selected: classes.selected}} label="Donationer"  icon={<ListAlt  />}></BottomNavigationAction>
-            <BottomNavigationAction classes={{root: classes.item, selected: classes.selected}} label="Profil" icon={<AccountBox />}></BottomNavigationAction>
+            <BottomNavigationAction classes={{root: classes.item, selected: classes.selected}} label="Opret donation" icon={<Home />} ></BottomNavigationAction>
+            <BottomNavigationAction classes={{root: classes.item, selected: classes.selected}} label="Vores donationer"  icon={<ListAlt  />}></BottomNavigationAction>
+            <BottomNavigationAction classes={{root: classes.item, selected: classes.selected}} label="Virksomhedsprofil" icon={<AccountBox />}></BottomNavigationAction>
         </BottomNavigation>
     )
 }

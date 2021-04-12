@@ -1,13 +1,13 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea} from '@material-ui/core';
-import './opretafhentning.css';
-import React from 'react';
-import RedigerModal from './redigerModal';
-import { deleteVarerFromAfhentning, getvarerFromDB, getAfhentningFromDatabase} from '../../service/firebase.service'
+import '../opretAfhentning/opretafhentning.css';
+import RedigerModal from '../components/redigerModal';
+import ModalBody from '../components/modalBody';
+import { deleteVarerFromAfhentning, getvarerFromDB, getAfhentningFromDatabase} from '../../../service/firebase.service'
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
 import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
@@ -20,7 +20,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
-import ModalBody from './modalBody'
+
 
 
 const useStyles = makeStyles(({ spacing }) => ({

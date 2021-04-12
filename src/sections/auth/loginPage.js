@@ -66,7 +66,7 @@ const useStyles = makeStyles(({ spacing }) => ({
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
                 title={'Login'}
-                subheader={'Login for at oprette en ny donation. Har jeres virksomhed ikke en profil, skal den oprettes først.'}
+                subheader={'Login for at oprette en ny donation af overskudsmad.'}
             />
                 <Card className={cx(classes.card, cardShadowStyles.root)}>
                     <CardActionArea>

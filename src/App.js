@@ -12,11 +12,11 @@ import {firebase_app} from '../src/service/firebase.config';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(false)
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem("userID"))
   
 
   useEffect(() => {
-    firebase_app.auth().onAuthStateChanged(setCurrentUser);
+   firebase_app.auth().onAuthStateChanged(setCurrentUser);
   }, [])
 
   return (
@@ -24,28 +24,31 @@ function App() {
 
     <div className="App">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <BrowserRouter baseName={'/'}>
+        <BrowserRouter basename="/">
           <Switch>
+
             <Route path={`${process.env.PUBLIC_URL}/login`} component={LoginPage} />
             <Route path={`${process.env.PUBLIC_URL}/opret-bruger`} component={SignupPage} />
-            
 
-            {currentUser !== null ?
+            { currentUser !== null ?
 
-            <>
+              <>
+              <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
+                return (<Redirect to={`${process.env.PUBLIC_URL}/velkommen`}/>) 
+              }} />
+
               <Route path={`${process.env.PUBLIC_URL}/velkommen`} render={() => <AppLayout value={0} />} />
               <Route path={`${process.env.PUBLIC_URL}/profil`} render={() => <AppLayout value={2} />} />
               </>
               :
 
               <Redirect to={`${process.env.PUBLIC_URL}/login`}/>
-              }
+ 
+            }
+
           </Switch>
         </BrowserRouter>
-         
       </MuiPickersUtilsProvider>
-          
-        
     </div>
   );
 }

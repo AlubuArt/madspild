@@ -1,5 +1,5 @@
 import { Card, CardContent, CardActionArea, Typography, Button, CardActions, Grid } from "@material-ui/core";
-import { sletAfhentningFraDatabase } from "../../service/firebase.service";
+import { sletAfhentningFraDatabase } from "../../../service/firebase.service";
 import {useState} from 'react'
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -124,9 +124,19 @@ const AfhentningCard = (props) => {
             </CardActionArea>
             <CardActions>
                 <Button variant="contained" onClick={(e) => sletAfhentning()}>Slet</Button>
-                <Button variant="contained"onClick={(e) => redigerAfhentning()}>Redigér</Button> 
-            </CardActions>
+
+                { props.data.booketStatus === "ikke booket" ?
+
+                    <Button variant="contained"onClick={(e) => redigerAfhentning()}>Redigér</Button> 
+
+                    : 
+
+                    <>
+                    </>
             
+            }
+            
+            </CardActions>
         </Card>
         
         </div>

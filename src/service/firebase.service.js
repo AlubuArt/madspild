@@ -15,10 +15,10 @@ export const addAfhentningToDataBase = async (userID) => {
         },
         aktiv: "ikke oprettet",
         betingelser: 'standard betingelser gælder',
-        booketStatus: false,
+        booketStatus: 'ikke tilgændelig for booking',
         kontaktPerson: '',
-        tidsrumFra: '',
-        tidsrumTil: '',
+        tidsrumFra: new Date(),
+        tidsrumTil: new Date(),
         id: docRef.id,
         userID: userID
         

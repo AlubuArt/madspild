@@ -1,10 +1,10 @@
 import { useReducer, useEffect} from 'react';
 import { CardActionArea, Modal, TextField } from '@material-ui/core';
-import './opretafhentning.css'
+import '../opretAfhentning/opretafhentning.css'
 import React from 'react';
 import { useState } from "react";
 import { DateTimePicker} from "@material-ui/pickers";
-import {getUserData, setAfhentningToActive} from '../../service/firebase.service';
+import {getUserData, setAfhentningToActive} from '../../../service/firebase.service';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';

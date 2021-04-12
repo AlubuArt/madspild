@@ -14,6 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import { withRouter } from 'react-router';
 
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -37,7 +38,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   }));
 
 
-const Profile = ({value, onChange}) => {
+const Profile = ({ history  }) => {
 
     const classes = useStyles();
     const cardHeaderStyles = useContainedCardHeaderStyles();
@@ -54,7 +55,6 @@ const Profile = ({value, onChange}) => {
         note: '',
         kontaktEmail: '',
         virksomhedsNavn: '',
-
     })
 
     const handleSave = () => {
@@ -63,7 +63,8 @@ const Profile = ({value, onChange}) => {
 
     const handleLogud = () => {
         logoutUser()
-        onChange(6)
+        history.push(`${process.env.PUBLIC_URL}/login`)
+       
     }
 
     const updateUserData = async () => {
@@ -90,7 +91,6 @@ const Profile = ({value, onChange}) => {
 
     useEffect(() => {
        getData()
-    
     }, [])
 
     return (
@@ -99,12 +99,13 @@ const Profile = ({value, onChange}) => {
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
                 title={'Virksomhedsprofil'}
-                subheader={'Udfyld oplysninger om virksomheden.'}
+                subheader={'Udfyld oplysninger om virksomheden, så er de autoudfyldt når du oprette en ny donation, men kan stadig rettes i under oprettelse. '}
             />
             <Card className={cx(classes.card, cardShadowStyles.root)}>
                 <CardActionArea>
                     <CardContent>
                         <TextField
+                            
                             className="form-control"
                             type="number"
                             label="Cvrnr"
@@ -132,7 +133,6 @@ const Profile = ({value, onChange}) => {
                             value={userData.kontaktPerson}
                             onChange={(e) => setUserData({kontaktPerson: e.target.value})}
                         />
-                        
                         <TextField
                             className="form-control"
                             type="text"
@@ -154,13 +154,13 @@ const Profile = ({value, onChange}) => {
                             value={userData.postnummer}
                             onChange={(e) => setUserData({postnummer: e.target.value})}
                         />
-                        <TextField
+                        {/* <TextField
                             className="form-control"
                             type="text"
                             label="tidsrum"
                             value={userData.tidsrum}
                             onChange={(e) => setUserData({tidsrum: e.target.value})}
-                        />
+                        /> */}
                         <TextField
                             className="form-control"
                             type="text"
@@ -172,16 +172,13 @@ const Profile = ({value, onChange}) => {
                             <Button style={{marginTop: '20px', marginRight: "20px"}} variant="contained" onClick={handleSave}>Gem</Button>
                             <Button style={{marginTop: '20px' }} variant="contained" onClick={handleLogud}>Log ud</Button>
                             
-                            </div>
-                            
+                        </div>
                     </CardContent>
                 </CardActionArea>
-
             </Card>
-
         </Container>
     )
 
 }
 
-export default Profile;
+export default withRouter(Profile);
