@@ -131,12 +131,12 @@ const AfhentningCard = (props) => {
 
                     : 
 
-                    <></>
+                    <>
+                    </>
             
             }
-                
-            </CardActions>
             
+            </CardActions>
         </Card>
         
         </div>
