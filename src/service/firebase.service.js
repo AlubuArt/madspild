@@ -14,7 +14,7 @@ export const addAfhentningToDataBase = async (userID) => {
             kontrakr: ''
         },
         aktiv: "ikke oprettet",
-        betingelser: 'standard betingelser gælder',
+        note: '',
         booketStatus: 'ikke tilgændelig for booking',
         kontaktPerson: '',
         tidsrumFra: new Date(),
