@@ -53,7 +53,6 @@ const SignupPage = ({ history }) => {
 
     const handleSignupClick =(e) => {
         e.preventDefault();
-        console.log("signs  up")
         signup();
     }
 
@@ -69,13 +68,7 @@ const SignupPage = ({ history }) => {
         }
     }
 
-    const handleModalClose = () => {
-        setModal(false);
-    }
-
-    const openModal = () => [
-        setModal(true)
-    ]
+    
 
     const redirectToHomePageAfterSuccess = async () => {
         try{
@@ -89,11 +82,7 @@ const SignupPage = ({ history }) => {
     return (
        
         <Container fluid='true'> 
-            <FeedbackModal 
-                open={modal}
-                onClose={handleModalClose}
-                handleSignupClick={handleSignupClick}
-            />
+            
             <CardHeader
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
@@ -126,7 +115,7 @@ const SignupPage = ({ history }) => {
                             onChange={(e) => setPass(e.target.value)}
                         />
                     </CardContent>
-                    <Button style={{margin: '10px'}} variant="contained" onClick={openModal}>Opret bruger</Button>
+                    <Button style={{margin: '10px'}} variant="contained" onClick={handleSignupClick}>Opret bruger</Button>
                 </CardActionArea>
             </Card>
         </Container>
