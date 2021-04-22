@@ -28,7 +28,6 @@ const AppLayout = (props) => {
           }
     }
 
-
     useEffect(() => {
 
       setValue(props.value)

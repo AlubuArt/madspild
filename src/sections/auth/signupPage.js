@@ -1,7 +1,7 @@
 import {useState, useReducer} from 'react'
 import {signupUserInDatabase} from '../../service/login.service'
 import {firebase_app } from '../../service/firebase.config'
-import {Container} from '@material-ui/core'
+import {Container, Modal} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import CardHeader from '@material-ui/core/CardHeader';
 import { useContainedCardHeaderStyles } from '@mui-treasury/styles/cardHeader/contained';
@@ -13,6 +13,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import FeedbackModal from './feedbackModal';
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -43,15 +44,16 @@ const SignupPage = ({ history }) => {
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
+    const [modal, setModal] = useState(false)
     const [profileData, setProfileData] = useReducer((value, newValue) => ({...value, ...newValue}), {
         virksomhedsNavn: '',
         virksomhedsCVR: '',
         kontaktEmail: '',
-
     })
 
     const handleSignupClick =(e) => {
         e.preventDefault();
+        console.log("signs  up")
         signup();
     }
 
@@ -59,27 +61,39 @@ const SignupPage = ({ history }) => {
         
         try {
           await signupUserInDatabase(profileData, pass); 
-          console.log("sign up sucessfull")
+          setModal(false)
+          console.log("closes modal")
           redirectToHomePageAfterSuccess()
         } catch (error) {
             console.log(error)
         }
     }
 
+    const handleModalClose = () => {
+        setModal(false);
+    }
+
+    const openModal = () => [
+        setModal(true)
+    ]
+
     const redirectToHomePageAfterSuccess = async () => {
         try{
             await firebase_app.auth().signInWithEmailAndPassword(profileData.kontaktEmail, pass);
             history.push(`${process.env.PUBLIC_URL}/velkommen`)
-
         } catch (error) {
             console.log(error)
         }
-        
     }
 
-
     return (
-        <Container fluid='true'>
+       
+        <Container fluid='true'> 
+            <FeedbackModal 
+                open={modal}
+                onClose={handleModalClose}
+                handleSignupClick={handleSignupClick}
+            />
             <CardHeader
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
@@ -112,7 +126,7 @@ const SignupPage = ({ history }) => {
                             onChange={(e) => setPass(e.target.value)}
                         />
                     </CardContent>
-                    <Button style={{margin: '10px'}} variant="contained" onClick={handleSignupClick}>Opret bruger</Button>
+                    <Button style={{margin: '10px'}} variant="contained" onClick={openModal}>Opret bruger</Button>
                 </CardActionArea>
             </Card>
         </Container>
