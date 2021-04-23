@@ -13,7 +13,10 @@ export const signupUserInDatabase = async (data, pass) => {
         userID: userID,
         virksomhedsNavn: data.virksomhedsNavn,
         virksomhedsCVR: data.virksomhedsCVR, 
-        kontaktEmail: data.kontaktEmail
+        kontaktEmail: data.kontaktEmail, 
+        afhentningsadresse: '',
+            
+
     })
 
     localStorage.setItem('userID', userID);

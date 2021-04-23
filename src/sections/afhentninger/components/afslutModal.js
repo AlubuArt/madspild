@@ -19,6 +19,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {sendFeedbackToDatabase} from '../../../service/feedback.service';
+
 
     const useStyles = makeStyles(({ spacing }) => ({
         card: {
@@ -55,13 +57,14 @@ const AfslutModal = (props) => {
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
-    const [dialogOpen, setDialogOpen] = useState(false)
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [feedbackDialog, setFeedbackDialog] = useState(false)
     const [afhentesFra, setAfhentesFra] = useState(new Date());
     const [afhentesTil, setAfhentesTil] = useState(new Date());
     const [currentUser] = useState(localStorage.getItem('userID'));
     const [userData, setUserData] = useState('')
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
-        afhentningsadresse: userData.afhentningsadresse,
+        afhentningsadresse: '',
         by: '',
         postnummer: '',
         aktiv: "oprettet",
@@ -77,13 +80,13 @@ const AfslutModal = (props) => {
     const afslut = () => {
         /* setAfhentningsInformation(afhentningsInformation) */
         setAfhentningToActive(props.currentAfhentning, afhentningsInformation)
-        
         setDialogOpen(true)
     }
 
     const handleSave = () => {
         props.close()
         setDialogOpen(false)
+        
     }
 
     const getUser = async () => {
@@ -91,7 +94,13 @@ const AfslutModal = (props) => {
         setUserData(user);
     }
 
-    
+    const handleDialogClose = () => {
+
+        setDialogOpen(false);
+        
+
+    }
+
 
     useEffect(() => {
         getUser();
@@ -109,6 +118,7 @@ const AfslutModal = (props) => {
         <Modal  open={props.open}
                 onClose={props.onClose}
         >
+
             <div>
             <Card className={cx(classes.card, cardShadowStyles.root)}>
                 <CardHeader
@@ -175,9 +185,9 @@ const AfslutModal = (props) => {
                 </CardActionArea>
             </Card>
                     
-                <Dialog
+            <Dialog
                 open={dialogOpen}
-                onClose={(e) => setDialogOpen(false)}
+                onClose={(e) => handleDialogClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -193,7 +203,10 @@ const AfslutModal = (props) => {
                     </Button>
             </DialogActions>
             </Dialog>
-        </div>    
+            
+            
+        </div>  
+       
         </Modal>
         
     )

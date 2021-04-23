@@ -11,17 +11,18 @@ import RedigerAfhentning from "../sections/afhentninger/redigerAfhentninger/redi
 const AppLayout = (props) => {
 
     const [value, setValue] = useState();
+    const [feedback, setFeedback] = useState(false);
     
     const renderView = () => {
         switch(value) {
             case 0:
-              return <HomeScreen value={value} onChange={setValue}/>;
+              return <HomeScreen value={value} onChange={setValue} feedback={feedback} setFeedback={setFeedback}/>;
             case 1:
               return <Afhentninger value={value} onChange={setValue}/>
             case 2: 
               return <Profile value={value} onChange={setValue}/>
             case 3: 
-              return <OpretAfhentning value={value} onChange={setValue}/>
+              return <OpretAfhentning value={value} onChange={setValue} feedback={feedback} setFeedback={setFeedback}/>
             case 4:
               return <RedigerAfhentning value={value} onChange={setValue}/>
            
@@ -31,7 +32,7 @@ const AppLayout = (props) => {
     useEffect(() => {
 
       setValue(props.value)
-    },[] )
+    },[props.value] )
 
     return (
         <>

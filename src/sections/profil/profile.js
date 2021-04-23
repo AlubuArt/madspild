@@ -15,6 +15,9 @@ import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { withRouter } from 'react-router';
+import FeedbackFormDialog from '../afhentninger/components/feedbackDialogs/feedbackDialog';
+
+import {tilpasningFeedback, tilpasningFeedbackTitle} from '../../util/index'
 
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -45,6 +48,9 @@ const Profile = ({ history  }) => {
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
     const [loggedInUser] = useState(localStorage.getItem('userID'))
+    const [feedbackDialogProfil, setFeedbackDialogProfil] = useState(false);
+
+    const [feedbackDialogLogud, setFeedbackDialogLogud] = useState(false);
     const [userData, setUserData] = useReducer((value, newValue) => ({...value, ...newValue}), {
         virksomhedsCVR: '',
         afhentningsadresse: '',
@@ -59,11 +65,12 @@ const Profile = ({ history  }) => {
 
     const handleSave = () => {
         updateUserData()
+        
     }
 
     const handleLogud = () => {
-        logoutUser()
-        history.push(`${process.env.PUBLIC_URL}/login`)
+    setFeedbackDialogLogud(true)
+       
        
     }
 
@@ -72,6 +79,9 @@ const Profile = ({ history  }) => {
             
             await updateUserDataInDatabase(userData, loggedInUser);
             alert("Oplysninger blev opdateret")
+            setTimeout(() => {
+                setFeedbackDialogProfil(true)
+              }, 1000);
             getData();
         } catch (error) {
             console.log(error)
@@ -87,6 +97,18 @@ const Profile = ({ history  }) => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    const handleClose = () => {
+
+        setFeedbackDialogProfil(false)
+        setFeedbackDialogLogud(false)
+    }
+
+    const handleFeedbackLogout = () => {
+       setFeedbackDialogLogud(false)
+       logoutUser()
+       history.push(`${process.env.PUBLIC_URL}/login`)
     }
 
     useEffect(() => {
@@ -176,6 +198,24 @@ const Profile = ({ history  }) => {
                     </CardContent>
                 </CardActionArea>
             </Card>
+            <FeedbackFormDialog 
+                    open={feedbackDialogProfil}
+                    onClose={handleClose}
+                    user={loggedInUser}
+                    question={tilpasningFeedback}
+                    title="Evaluering"
+                    uim="tilpasning profil oprettet"
+                    
+            />
+            <FeedbackFormDialog 
+                    open={feedbackDialogLogud}
+                    onClose={handleClose}
+                    user={loggedInUser}
+                    question={tilpasningFeedback}
+                    title="Evaluering"
+                    uim="tilpasning-logud"
+                    logout={handleFeedbackLogout}
+            />
         </Container>
     )
 

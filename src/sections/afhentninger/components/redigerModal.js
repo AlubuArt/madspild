@@ -99,6 +99,7 @@ const RedigerModal = (props) => {
     return (
         <Modal  open={props.open}
                 onClose={props.onClose}
+                
         >
             <div>
             <Card className={cx(classes.card, cardShadowStyles.root)}>

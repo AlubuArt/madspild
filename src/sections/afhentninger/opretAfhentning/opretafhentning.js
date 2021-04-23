@@ -44,7 +44,7 @@ const useStyles = makeStyles(({ spacing}) => ({
   }));
 
 
-const OpretAfhentning = ({value, onChange}) => {
+const OpretAfhentning = ({onChange, feedback, setFeedback}) => {
 
     const classes = useStyles();
     const [modal, setModal] = useState(false)
@@ -82,6 +82,7 @@ const OpretAfhentning = ({value, onChange}) => {
         setCurrentAfhentning('')
         setVarer([])
         setAfslutModal(false)
+        setFeedback(true)
         onChange(0)
 
     }
@@ -115,6 +116,7 @@ const OpretAfhentning = ({value, onChange}) => {
                 close={clearVarerList}
                 data={'2'}
                 modalTitle="Færdiggør afhentning"
+
             />
 
             <Card className={cx(classes.card, cardShadowStyles.root)}>
@@ -157,18 +159,15 @@ const OpretAfhentning = ({value, onChange}) => {
                     </CardContent>
                     </CardActionArea>
                     <CardActions >
-                        
                         <Button variant="contained" onClick={(e) => setModal(true)}size="small" >
                             Tilføj vare 
                         </Button>
                          <Button variant="contained" onClick={(e) => setAfslutModal(true)} size="small" >
                             Opret
                         </Button>   
-                       
                     </CardActions>  
-                
-                
             </Card>
+           
         </div>
     )
 }

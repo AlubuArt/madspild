@@ -13,7 +13,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { CardActionArea } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import FeedbackModal from './feedbackModal';
 
 const useStyles = makeStyles(({ spacing }) => ({
     card: {
@@ -44,7 +43,6 @@ const SignupPage = ({ history }) => {
     const cardHeaderStyles = useContainedCardHeaderStyles();
     const cardShadowStyles = useSoftRiseShadowStyles({ inactive: true });
     const cardHeaderShadowStyles = useFadedShadowStyles();
-    const [modal, setModal] = useState(false)
     const [profileData, setProfileData] = useReducer((value, newValue) => ({...value, ...newValue}), {
         virksomhedsNavn: '',
         virksomhedsCVR: '',
@@ -54,25 +52,25 @@ const SignupPage = ({ history }) => {
     const handleSignupClick =(e) => {
         e.preventDefault();
         signup();
+        localStorage.setItem('newUser', "true")
     }
 
     const signup = async () => {
         
         try {
           await signupUserInDatabase(profileData, pass); 
-          setModal(false)
-          console.log("closes modal")
+          
           redirectToHomePageAfterSuccess()
         } catch (error) {
             console.log(error)
         }
     }
 
-    
 
     const redirectToHomePageAfterSuccess = async () => {
         try{
             await firebase_app.auth().signInWithEmailAndPassword(profileData.kontaktEmail, pass);
+            
             history.push(`${process.env.PUBLIC_URL}/velkommen`)
         } catch (error) {
             console.log(error)
@@ -82,7 +80,7 @@ const SignupPage = ({ history }) => {
     return (
        
         <Container fluid='true'> 
-            
+           
             <CardHeader
                 className={cardHeaderShadowStyles.root}
                 classes={cardHeaderStyles}
