@@ -59,7 +59,7 @@ const SignupPage = ({ history }) => {
         
         try {
           await signupUserInDatabase(profileData, pass); 
-          
+                
           redirectToHomePageAfterSuccess()
         } catch (error) {
             console.log(error)

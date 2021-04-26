@@ -16,8 +16,7 @@ import { CardActionArea } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { withRouter } from 'react-router';
 import FeedbackFormDialog from '../afhentninger/components/feedbackDialogs/feedbackDialog';
-
-import {tilpasningFeedback, tilpasningFeedbackTitle} from '../../util/index'
+import {tilpasningFeedback} from '../../util/index'
 
 
 const useStyles = makeStyles(({ spacing }) => ({
@@ -49,7 +48,6 @@ const Profile = ({ history  }) => {
     const cardHeaderShadowStyles = useFadedShadowStyles();
     const [loggedInUser] = useState(localStorage.getItem('userID'))
     const [feedbackDialogProfil, setFeedbackDialogProfil] = useState(false);
-
     const [feedbackDialogLogud, setFeedbackDialogLogud] = useState(false);
     const [userData, setUserData] = useReducer((value, newValue) => ({...value, ...newValue}), {
         virksomhedsCVR: '',
@@ -71,13 +69,12 @@ const Profile = ({ history  }) => {
     const handleLogud = () => {
     setFeedbackDialogLogud(true)
        
-       
     }
 
     const updateUserData = async () => {
         try{
             
-            await updateUserDataInDatabase(userData, loggedInUser);
+            updateUserDataInDatabase(userData, loggedInUser);
             alert("Oplysninger blev opdateret")
             setTimeout(() => {
                 setFeedbackDialogProfil(true)
@@ -100,7 +97,6 @@ const Profile = ({ history  }) => {
     }
 
     const handleClose = () => {
-
         setFeedbackDialogProfil(false)
         setFeedbackDialogLogud(false)
     }
@@ -127,7 +123,6 @@ const Profile = ({ history  }) => {
                 <CardActionArea>
                     <CardContent>
                         <TextField
-                            
                             className="form-control"
                             type="number"
                             label="Cvrnr"
@@ -216,6 +211,7 @@ const Profile = ({ history  }) => {
                     uim="tilpasning-logud"
                     logout={handleFeedbackLogout}
             />
+            
         </Container>
     )
 

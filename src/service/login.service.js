@@ -1,5 +1,6 @@
 import {firebase_app} from '../service/firebase.config'
 import 'firebase/storage';
+import {createTestSession } from './feedback.service';
 
 const db = firebase_app.firestore()
 const coll = db.collection('users/')
@@ -18,7 +19,7 @@ export const signupUserInDatabase = async (data, pass) => {
             
 
     })
-
+    createTestSession(userID);
     localStorage.setItem('userID', userID);
     localStorage.setItem("authenticated", true)
 }

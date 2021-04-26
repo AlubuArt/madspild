@@ -17,11 +17,14 @@ export default function FeedbackFormDialog(props) {
 
   const handleClose = () => {
     
-    sendFeedbackToDatabase(user, feedback, uim)
+    sendFeedbackToDatabase(user, feedback)
+    
     props.onClose()
   };
 
-  const handleCloseAndLogout = (user, feedback, uim) => {
+  const handleCloseAndLogout = async () => {
+    console.log("feedback")
+    await sendFeedbackToDatabase(user, feedback, uim)
     props.logout()
   }
 
