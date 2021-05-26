@@ -1,0 +1,73 @@
+Date : 2021-05-18 15:58:32
+Directory : /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild
+Total : 31 files,  18466 codes, 62 comments, 383 blanks, all 18911 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |          4 |     16,664 |         10 |          4 |     16,678 |
+| JavaScript       |         20 |      1,668 |         27 |        329 |      2,024 |
+| CSS              |          4 |         47 |          0 |         21 |         68 |
+| JavaScript React |          1 |         36 |          1 |         12 |         49 |
+| HTML             |          1 |         30 |         24 |          2 |         56 |
+| Markdown         |          1 |         21 |          0 |         15 |         36 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                   |         31 |     18,466 |         62 |        383 |     18,911 |
+| public                                                                                                                              |          2 |         55 |         24 |          3 |         82 |
+| src                                                                                                                                 |         25 |      1,751 |         28 |        362 |      2,141 |
+| src/components                                                                                                                      |          1 |         36 |          1 |         12 |         49 |
+| src/navigation                                                                                                                      |          1 |         40 |          0 |         13 |         53 |
+| src/sections                                                                                                                        |         17 |      1,448 |         25 |        263 |      1,736 |
+| src/sections/afhentninger                                                                                                           |         11 |        959 |         15 |        179 |      1,153 |
+| src/sections/afhentninger/components                                                                                                |          6 |        627 |          6 |         95 |        728 |
+| src/sections/afhentninger/opretAfhentning                                                                                           |          2 |        150 |          8 |         38 |        196 |
+| src/sections/afhentninger/redigerAfhentninger                                                                                       |          1 |        136 |          1 |         22 |        159 |
+| src/sections/auth                                                                                                                   |          3 |        275 |          3 |         50 |        328 |
+| src/sections/home                                                                                                                   |          2 |         55 |          0 |         16 |         71 |
+| src/sections/profil                                                                                                                 |          1 |        159 |          7 |         18 |        184 |
+| src/service                                                                                                                         |          3 |        163 |          1 |         46 |        210 |
++-------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                                            | language         | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/README.md                                                          | Markdown         |         21 |          0 |         15 |         36 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/firebase.json                                                      | JSON             |          7 |         10 |          0 |         17 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/package-lock.json                                                  | JSON             |     16,583 |          0 |          1 |     16,584 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/package.json                                                       | JSON             |         49 |          0 |          2 |         51 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/public/index.html                                                  | HTML             |         30 |         24 |          2 |         56 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/public/manifest.json                                               | JSON             |         25 |          0 |          1 |         26 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/App.js                                                         | JavaScript       |         39 |          1 |         17 |         57 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/app.css                                                        | CSS              |         16 |          0 |          8 |         24 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/components/app.jsx                                             | JavaScript React |         36 |          1 |         12 |         49 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/index.js                                                       | JavaScript       |          9 |          0 |          3 |         12 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/navigation/bottomNavigation.js                                 | JavaScript       |         40 |          0 |         13 |         53 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/afhentninger.css                         | CSS              |          0 |          0 |          1 |          1 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/afhentninger.js                          | JavaScript       |         46 |          0 |         23 |         69 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/afhentningCard.js             | JavaScript       |        125 |          1 |         22 |        148 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/afslutModal.js                | JavaScript       |        181 |          3 |         20 |        204 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/dateAndTimePIcker.js          | JavaScript       |         17 |          0 |          8 |         25 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/modalBody.js                  | JavaScript       |        100 |          1 |         17 |        118 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/redigerModal.js               | JavaScript       |        173 |          1 |         20 |        194 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/vareLinje.js                  | JavaScript       |         31 |          0 |          8 |         39 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/opretAfhentning/opretafhentning.css      | CSS              |         16 |          0 |          5 |         21 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/opretAfhentning/opretafhentning.js       | JavaScript       |        134 |          8 |         33 |        175 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/redigerAfhentninger/redigerAfhentning.js | JavaScript       |        136 |          1 |         22 |        159 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/auth/feedbackModal.js                                 | JavaScript       |         78 |          1 |         18 |         97 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/auth/loginPage.js                                     | JavaScript       |         89 |          1 |         14 |        104 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/auth/signupPage.js                                    | JavaScript       |        108 |          1 |         18 |        127 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/home/home.css                                         | CSS              |         15 |          0 |          7 |         22 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/home/homeScreen.js                                    | JavaScript       |         40 |          0 |          9 |         49 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/profil/profile.js                                     | JavaScript       |        159 |          7 |         18 |        184 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/service/firebase.config.js                                     | JavaScript       |         18 |          1 |         11 |         30 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/service/firebase.service.js                                    | JavaScript       |        117 |          0 |         27 |        144 |
+| /Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/service/login.service.js                                       | JavaScript       |         28 |          0 |          8 |         36 |
+| Total                                                                                                                               |                  |     18,466 |         62 |        383 |     18,911 |
++-------------------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

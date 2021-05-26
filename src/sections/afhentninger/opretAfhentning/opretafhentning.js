@@ -129,7 +129,7 @@ const OpretAfhentning = ({value, onChange}) => {
                     <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Varetype</TableCell>
+              <TableCell>Vare navn</TableCell>
               <TableCell align="right">Mængde</TableCell>
               <TableCell align="right"></TableCell>
             </TableRow>
@@ -141,9 +141,7 @@ const OpretAfhentning = ({value, onChange}) => {
                   {vare.title}
                 </TableCell>
                 <TableCell align="center">{vare.mængde} {vare.mængdeEnhed}</TableCell>
-                {/* <TableCell align="right" size="small" >
-                  <EditIcon onClick={(e) => redigerVare(vare.id)} />
-                </TableCell> */}
+                
                 <TableCell align="center" size="small" padding="none">
                     <DeleteOutlinedIcon onClick={(e) => sletVare(vare.id)}/> 
                 </TableCell>

@@ -81,13 +81,10 @@ const ModalBody = (props) => {
                     <CardActionArea>
                     <CardContent className={classes.content}>
                         <div>
-                            <TextField className={classes.textField} id="standard-basic" label="Varens type" onChange={(e) => setVareinformationer({title: e.target.value})}/> 
+                            <TextField className={classes.textField} id="standard-basic" label="Varens navn" onChange={(e) => setVareinformationer({title: e.target.value})}/> 
                         </div>
+                            <InputLabel className={classes.select}>Mængde Enhed</InputLabel>
                         <div>
-                            <TextField className={classes.textField} id="standard-basic" label="Mængde" onChange={(e) => setVareinformationer({mængde: e.target.value})}/>
-                    </div> 
-                        <InputLabel className={classes.select}>Mængde Enhed</InputLabel>
-                   <div>
                         <FormControl >
                         <Select
                             labelId="demo-simple-select-label"
@@ -100,6 +97,10 @@ const ModalBody = (props) => {
                         </Select>
                     </FormControl>
                    </div>  
+                        <div>
+                            <TextField className={classes.textField} id="standard-basic" label="Mængde" onChange={(e) => setVareinformationer({mængde: e.target.value})}/>
+                    </div> 
+                        
                 <div>
                    <Button style={{marginTop: '20px'}}variant="contained" onClick={(e) => tilføjVaren()}>GEM</Button> 
                 </div>

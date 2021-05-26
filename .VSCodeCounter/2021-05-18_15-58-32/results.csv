@@ -1,0 +1,33 @@
+"filename", "language", "CSS", "Markdown", "JSON", "HTML", "JavaScript", "JavaScript React", "comment", "blank", "total"
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/README.md", "Markdown", 0, 21, 0, 0, 0, 0, 0, 15, 36
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/firebase.json", "JSON", 0, 0, 7, 0, 0, 0, 10, 0, 17
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/package-lock.json", "JSON", 0, 0, 16583, 0, 0, 0, 0, 1, 16584
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/package.json", "JSON", 0, 0, 49, 0, 0, 0, 0, 2, 51
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/public/index.html", "HTML", 0, 0, 0, 30, 0, 0, 24, 2, 56
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/public/manifest.json", "JSON", 0, 0, 25, 0, 0, 0, 0, 1, 26
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/App.js", "JavaScript", 0, 0, 0, 0, 39, 0, 1, 17, 57
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/app.css", "CSS", 16, 0, 0, 0, 0, 0, 0, 8, 24
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/components/app.jsx", "JavaScript React", 0, 0, 0, 0, 0, 36, 1, 12, 49
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/index.js", "JavaScript", 0, 0, 0, 0, 9, 0, 0, 3, 12
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/navigation/bottomNavigation.js", "JavaScript", 0, 0, 0, 0, 40, 0, 0, 13, 53
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/afhentninger.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/afhentninger.js", "JavaScript", 0, 0, 0, 0, 46, 0, 0, 23, 69
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/afhentningCard.js", "JavaScript", 0, 0, 0, 0, 125, 0, 1, 22, 148
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/afslutModal.js", "JavaScript", 0, 0, 0, 0, 181, 0, 3, 20, 204
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/dateAndTimePIcker.js", "JavaScript", 0, 0, 0, 0, 17, 0, 0, 8, 25
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/modalBody.js", "JavaScript", 0, 0, 0, 0, 100, 0, 1, 17, 118
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/redigerModal.js", "JavaScript", 0, 0, 0, 0, 173, 0, 1, 20, 194
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/components/vareLinje.js", "JavaScript", 0, 0, 0, 0, 31, 0, 0, 8, 39
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/opretAfhentning/opretafhentning.css", "CSS", 16, 0, 0, 0, 0, 0, 0, 5, 21
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/opretAfhentning/opretafhentning.js", "JavaScript", 0, 0, 0, 0, 134, 0, 8, 33, 175
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/afhentninger/redigerAfhentninger/redigerAfhentning.js", "JavaScript", 0, 0, 0, 0, 136, 0, 1, 22, 159
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/auth/feedbackModal.js", "JavaScript", 0, 0, 0, 0, 78, 0, 1, 18, 97
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/auth/loginPage.js", "JavaScript", 0, 0, 0, 0, 89, 0, 1, 14, 104
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/auth/signupPage.js", "JavaScript", 0, 0, 0, 0, 108, 0, 1, 18, 127
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/home/home.css", "CSS", 15, 0, 0, 0, 0, 0, 0, 7, 22
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/home/homeScreen.js", "JavaScript", 0, 0, 0, 0, 40, 0, 0, 9, 49
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/sections/profil/profile.js", "JavaScript", 0, 0, 0, 0, 159, 0, 7, 18, 184
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/service/firebase.config.js", "JavaScript", 0, 0, 0, 0, 18, 0, 1, 11, 30
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/service/firebase.service.js", "JavaScript", 0, 0, 0, 0, 117, 0, 0, 27, 144
+"/Users/jacobchristensen/Arbejde/code_projekter/madspild/madspild/src/service/login.service.js", "JavaScript", 0, 0, 0, 0, 28, 0, 0, 8, 36
+"Total", "-", 47, 21, 16664, 30, 1668, 36, 62, 383, 18911

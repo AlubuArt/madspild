@@ -61,7 +61,7 @@ const AfslutModal = (props) => {
     const [currentUser] = useState(localStorage.getItem('userID'));
     const [userData, setUserData] = useState('')
     const [afhentningsInformation, setAfhentningsInformation] = useReducer((value, newValue) => ({...value, ...newValue}), {
-        afhentningsadresse: userData.afhentningsadresse,
+        afhentningsadresse: '',
         by: '',
         postnummer: '',
         aktiv: "oprettet",
@@ -124,7 +124,7 @@ const AfslutModal = (props) => {
                             id="standard-basic" 
                             label="Leverandørnavn" 
                             value={afhentningsInformation.virksomhedsNavn}
-                            onChange={(e) => setAfhentningsInformation({leverandør: e.target.value})}>
+                            onChange={(e) => setAfhentningsInformation({virksomhedsNavn: e.target.value})}>
                         </TextField>
                         <TextField 
                             className={classes.textField}

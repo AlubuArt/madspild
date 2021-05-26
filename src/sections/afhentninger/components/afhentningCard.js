@@ -116,7 +116,7 @@ const AfhentningCard = (props) => {
                         </Grid>
                         <Grid item xs={8}>
                             <Typography gutterBottom variant="p">
-                            {props.data.betingelser}
+                            {props.data.note}
                             </Typography>
                         </Grid>
                     </Grid>
